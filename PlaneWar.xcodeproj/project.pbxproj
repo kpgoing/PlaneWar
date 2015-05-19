@@ -13,6 +13,14 @@
 		2C00F08A1B0B361600AD7B19 /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 2C00F0891B0B361600AD7B19 /* nice_music.ogg */; };
 		2C00F08C1B0B361600AD7B19 /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C00F08B1B0B361600AD7B19 /* sansation.ttf */; };
 		2C00F08E1B0B361600AD7B19 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C00F08D1B0B361600AD7B19 /* icon.png */; };
+		2C37A5AC1B0B66AB000D19C5 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A5AA1B0B66AB000D19C5 /* Bullet.cpp */; };
+		2C91FC381B0B5C9300EEDA44 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C91FC371B0B5C9300EEDA44 /* background.png */; };
+		2C91FC3A1B0B5CA700EEDA44 /* shoot.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C91FC391B0B5CA700EEDA44 /* shoot.png */; };
+		2C91FC3C1B0B5CBC00EEDA44 /* game_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 2C91FC3B1B0B5CBC00EEDA44 /* game_music.ogg */; };
+		2C91FC3E1B0B5CEF00EEDA44 /* shoot.pack in Resources */ = {isa = PBXBuildFile; fileRef = 2C91FC3D1B0B5CEF00EEDA44 /* shoot.pack */; };
+		2C91FC401B0B5ED200EEDA44 /* 主飞机.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C91FC3F1B0B5ED200EEDA44 /* 主飞机.png */; };
+		2CD602001B0B6C25006FB39F /* MyPlane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CD601FF1B0B6C25006FB39F /* MyPlane.cpp */; };
+		2CD602031B0B75DE006FB39F /* Backgroud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CD602011B0B75DE006FB39F /* Backgroud.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +33,17 @@
 		2C00F0891B0B361600AD7B19 /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = nice_music.ogg; sourceTree = "<group>"; };
 		2C00F08B1B0B361600AD7B19 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
 		2C00F08D1B0B361600AD7B19 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		2C37A5AA1B0B66AB000D19C5 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
+		2C37A5AB1B0B66AB000D19C5 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
+		2C91FC371B0B5C9300EEDA44 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		2C91FC391B0B5CA700EEDA44 /* shoot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shoot.png; sourceTree = "<group>"; };
+		2C91FC3B1B0B5CBC00EEDA44 /* game_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = game_music.ogg; sourceTree = "<group>"; };
+		2C91FC3D1B0B5CEF00EEDA44 /* shoot.pack */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shoot.pack; sourceTree = "<group>"; };
+		2C91FC3F1B0B5ED200EEDA44 /* 主飞机.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "主飞机.png"; sourceTree = "<group>"; };
+		2C91FC421B0B5F6300EEDA44 /* MyPlane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPlane.h; sourceTree = "<group>"; };
+		2CD601FF1B0B6C25006FB39F /* MyPlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyPlane.cpp; sourceTree = "<group>"; };
+		2CD602011B0B75DE006FB39F /* Backgroud.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Backgroud.cpp; sourceTree = "<group>"; };
+		2CD602021B0B75DE006FB39F /* Backgroud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Backgroud.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +79,10 @@
 				2C00F0811B0B361600AD7B19 /* ResourcePath.mm */,
 				2C00F0831B0B361600AD7B19 /* ResourcePath.hpp */,
 				2C00F0841B0B361600AD7B19 /* main.cpp */,
+				2C37A5AA1B0B66AB000D19C5 /* Bullet.cpp */,
+				2CD601FF1B0B6C25006FB39F /* MyPlane.cpp */,
+				2C37A5AB1B0B66AB000D19C5 /* Bullet.h */,
+				2C91FC421B0B5F6300EEDA44 /* MyPlane.h */,
 				2C00F0861B0B361600AD7B19 /* Resources */,
 				2C00F07F1B0B361600AD7B19 /* Supporting Files */,
 			);
@@ -69,6 +92,8 @@
 		2C00F07F1B0B361600AD7B19 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2CD602011B0B75DE006FB39F /* Backgroud.cpp */,
+				2CD602021B0B75DE006FB39F /* Backgroud.h */,
 				2C00F0801B0B361600AD7B19 /* PlaneWar-Info.plist */,
 			);
 			name = "Supporting Files";
@@ -78,8 +103,13 @@
 			isa = PBXGroup;
 			children = (
 				2C00F0871B0B361600AD7B19 /* cute_image.jpg */,
+				2C91FC391B0B5CA700EEDA44 /* shoot.png */,
+				2C91FC3B1B0B5CBC00EEDA44 /* game_music.ogg */,
+				2C91FC3D1B0B5CEF00EEDA44 /* shoot.pack */,
 				2C00F0891B0B361600AD7B19 /* nice_music.ogg */,
+				2C91FC3F1B0B5ED200EEDA44 /* 主飞机.png */,
 				2C00F08B1B0B361600AD7B19 /* sansation.ttf */,
+				2C91FC371B0B5C9300EEDA44 /* background.png */,
 				2C00F08D1B0B361600AD7B19 /* icon.png */,
 			);
 			name = Resources;
@@ -143,9 +173,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C00F08E1B0B361600AD7B19 /* icon.png in Resources */,
+				2C91FC3A1B0B5CA700EEDA44 /* shoot.png in Resources */,
+				2C91FC381B0B5C9300EEDA44 /* background.png in Resources */,
 				2C00F08C1B0B361600AD7B19 /* sansation.ttf in Resources */,
+				2C91FC3E1B0B5CEF00EEDA44 /* shoot.pack in Resources */,
 				2C00F08A1B0B361600AD7B19 /* nice_music.ogg in Resources */,
+				2C91FC401B0B5ED200EEDA44 /* 主飞机.png in Resources */,
 				2C00F0881B0B361600AD7B19 /* cute_image.jpg in Resources */,
+				2C91FC3C1B0B5CBC00EEDA44 /* game_music.ogg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,8 +207,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CD602031B0B75DE006FB39F /* Backgroud.cpp in Sources */,
 				2C00F0851B0B361600AD7B19 /* main.cpp in Sources */,
 				2C00F0821B0B361600AD7B19 /* ResourcePath.mm in Sources */,
+				2CD602001B0B6C25006FB39F /* MyPlane.cpp in Sources */,
+				2C37A5AC1B0B66AB000D19C5 /* Bullet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +349,7 @@
 				2C00F0931B0B361600AD7B19 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
