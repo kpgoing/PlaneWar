@@ -15,7 +15,8 @@ class Bullet: public sf::Sprite
 {
 public:
     Bullet();
-    
+
+    void check();
 private:
     sf::Texture  texture;
     

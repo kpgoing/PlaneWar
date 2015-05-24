@@ -18,10 +18,15 @@ MyPlane::MyPlane()
     }
     this->setTexture(texture);
     image_size = image.getSize();
+ 
 }
-void MyPlane::setwindow(Backgroud *opwindow)
+void MyPlane::setowner(Backgroud *opwindow)
 {
     pwindow = opwindow;
+}
+Backgroud* MyPlane::getowner()
+{
+    return pwindow;
 }
 sf::Vector2u MyPlane::getImage_size()
 {
@@ -30,7 +35,7 @@ sf::Vector2u MyPlane::getImage_size()
 bool MyPlane::checkleft()
 {
     sf::Vector2f position = getPosition();
-    if (position.x == 0) {
+    if (position.x <= 0) {
         return false;
     }else
     {
@@ -39,8 +44,8 @@ bool MyPlane::checkleft()
 }
 bool MyPlane::checkright()
 {
-    sf::Vector2f position =getPosition();
-    if (position.x == 480-image_size.x) {
+    sf::Vector2f position = getPosition();
+    if (position.x >=480-image_size.x) {
         return false;
     }else
     {
@@ -50,7 +55,7 @@ bool MyPlane::checkright()
 bool MyPlane::checkup()
 {
     sf::Vector2f position = getPosition();
-    if (position.y == 0) {
+    if (position.y <= 0) {
         return false;
     }else
     {
@@ -60,16 +65,62 @@ bool MyPlane::checkup()
 bool MyPlane::checkdown()
 {
     sf::Vector2f position = getPosition();
-    if (position.y == 800-image_size.y) {
+    if (position.y >= 800-image_size.y) {
         return false;
     }else
     {
         return true;
     }
 }
-void MyPlane::fire()
+void MyPlane::move_left()
 {
-    static Bullet bullet;
-    bullet.setPosition(image_size.x/2+getPosition().x,image_size.y);
-    pwindow->draw2(bullet);
+    if (checkleft()) {
+        move(-speed, 0);
+    }
 }
+void MyPlane::move_right()
+{
+    if (checkright()) {
+        move(speed,0);
+    }
+    
+}
+void MyPlane::move_up()
+{
+    if (checkup()) {
+        move(0, -speed);
+    }
+}
+void MyPlane::move_down()
+{
+    if (checkdown()) {
+        move(0,speed);
+    }
+}
+void MyPlane::moving(sf::Event event)
+{
+    sf::Vector2f position = getPosition();
+    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Left) {
+         if (!(position.x <= 0))
+         {
+        this->move_left();
+         }
+    }
+    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right) {
+        if (!(position.x >=480-image_size.x)) {
+            this->move_right();
+        }
+        this->move_right();
+    }
+    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Up) {
+        if (!(position.y<= 0)) {
+            this->move_up();
+        }
+    }
+    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Down) {
+        if (!(position.y >= 800-image_size.y)) {
+       this->move_down();
+            }
+    }
+}
+//void my

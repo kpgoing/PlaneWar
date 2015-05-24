@@ -13,4 +13,5 @@ Bullet::Bullet()
         return EXIT_FAILURE;
     }
     this->setTexture(texture);
+    this->setPosition(100, 100);
 }

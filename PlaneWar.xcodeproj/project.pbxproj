@@ -21,6 +21,7 @@
 		2C91FC401B0B5ED200EEDA44 /* 主飞机.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C91FC3F1B0B5ED200EEDA44 /* 主飞机.png */; };
 		2CD602001B0B6C25006FB39F /* MyPlane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CD601FF1B0B6C25006FB39F /* MyPlane.cpp */; };
 		2CD602031B0B75DE006FB39F /* Backgroud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CD602011B0B75DE006FB39F /* Backgroud.cpp */; };
+		2CDF43451B0C7CB300279FFA /* Weapon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CDF43431B0C7CB300279FFA /* Weapon.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		2CD601FF1B0B6C25006FB39F /* MyPlane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MyPlane.cpp; sourceTree = "<group>"; };
 		2CD602011B0B75DE006FB39F /* Backgroud.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Backgroud.cpp; sourceTree = "<group>"; };
 		2CD602021B0B75DE006FB39F /* Backgroud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Backgroud.h; sourceTree = "<group>"; };
+		2CDF43431B0C7CB300279FFA /* Weapon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Weapon.cpp; sourceTree = "<group>"; };
+		2CDF43441B0C7CB300279FFA /* Weapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Weapon.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,8 @@
 				2C00F0811B0B361600AD7B19 /* ResourcePath.mm */,
 				2C00F0831B0B361600AD7B19 /* ResourcePath.hpp */,
 				2C00F0841B0B361600AD7B19 /* main.cpp */,
+				2CDF43431B0C7CB300279FFA /* Weapon.cpp */,
+				2CDF43441B0C7CB300279FFA /* Weapon.h */,
 				2C37A5AA1B0B66AB000D19C5 /* Bullet.cpp */,
 				2CD601FF1B0B6C25006FB39F /* MyPlane.cpp */,
 				2C37A5AB1B0B66AB000D19C5 /* Bullet.h */,
@@ -208,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CD602031B0B75DE006FB39F /* Backgroud.cpp in Sources */,
+				2CDF43451B0C7CB300279FFA /* Weapon.cpp in Sources */,
 				2C00F0851B0B361600AD7B19 /* main.cpp in Sources */,
 				2C00F0821B0B361600AD7B19 /* ResourcePath.mm in Sources */,
 				2CD602001B0B6C25006FB39F /* MyPlane.cpp in Sources */,

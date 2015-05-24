@@ -18,12 +18,17 @@ class Backgroud
 public:
     Backgroud();
     friend class MyPlane;
-    void draw2(sf::Sprite&);
+//    void draw(sf::Sprite);
     sf::RenderWindow& getwindow();
+//    void showbackground();
+    void addsprite(sf::Sprite*);
+    void refresh();
+    void addplane(sf::Sprite*);
+    static sf::RenderWindow window;
 private:
     sf::Texture texture;
     sf::Sprite sprite;
-    sf::RenderWindow window(sf::VideoMode(480,800),"plane");
-    std::vector<sf::Sprite&> sprites;
+    sf::Sprite *plane;
+    std::vector<sf::Sprite*> sprites;
 };
 #endif /* defined(__PlaneWar__Backgroud__) */

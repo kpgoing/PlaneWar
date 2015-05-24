@@ -22,13 +22,22 @@ public:
     bool checkright();
     bool checkup();
     bool checkdown();
-    void fire();
-    void setwindow(Backgroud *);
+    void move_left();
+    void move_right();
+    void move_up();
+    void move_down();
+    void moving(sf::Event);
+//    void fire();
+    void setowner(Backgroud *);
+    Backgroud* getowner();
 //    sf::Vector2u getSize();
 private:
     sf::Image image;
     sf::Texture  texture;
     sf::Vector2u image_size;
+    std::vector<sf::Sprite*> bullets;
     Backgroud *pwindow;
+    int i = 0;
+    int speed = 3;
 };
 #endif /* defined(__PlaneWar__MyPlane__) */
