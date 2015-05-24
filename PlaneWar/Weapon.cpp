@@ -32,6 +32,6 @@ void Weapon::fly()
 //    }
     for(auto &a:bullets)
     {
-        a->move(0, -1);
+        a->move(0, -5);
     }
 }

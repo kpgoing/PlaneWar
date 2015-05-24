@@ -17,6 +17,7 @@ class Backgroud
 {
 public:
     Backgroud();
+//    void setbullets(std::vector<sf::Sprite*> *);
     friend class MyPlane;
 //    void draw(sf::Sprite);
     sf::RenderWindow& getwindow();
@@ -29,6 +30,8 @@ private:
     sf::Texture texture;
     sf::Sprite sprite;
     sf::Sprite *plane;
+//    std::vector<sf::Sprite*> *bullets;
+//    std::vector<sf::Sprite*> *enemys;
     std::vector<sf::Sprite*> sprites;
 };
 #endif /* defined(__PlaneWar__Backgroud__) */

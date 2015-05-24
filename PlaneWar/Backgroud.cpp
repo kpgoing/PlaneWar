@@ -33,9 +33,9 @@ void Backgroud::refresh()
 {
     window.clear();
     for (auto i = sprites.begin(); i<sprites.end(); i++) {
-        if ((*i)->getPosition().y<-5) {
-            sprites.erase(i);
+        if ((*i)->getPosition().y<-110) {
 //            delete *i;
+            sprites.erase(i);
 
         }
     }

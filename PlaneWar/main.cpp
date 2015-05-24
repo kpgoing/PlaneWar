@@ -19,16 +19,19 @@
 #include "ResourcePath.hpp"
 #include "MyPlane.h"
 #include "Weapon.h"
+#include "Army.h"
 #include <iostream>
 using  namespace std;
 int main(int, char const**)
 {
     Backgroud window;
+    Army army;
+    army.setowner(&window);
     sf::Vector2u screen_size(SCREEN_WIDTH,SCREEN_HIGTH);
     MyPlane myplane;
     Bullet bullet;
-    sf::Clock clock;
-    sf::Time time ;
+    sf::Clock clock1,clock2,clock3;
+    sf::Time time1 ,time2,time3;
     myplane.setowner(&window);
     Weapon myweapon(&myplane);
     sf::Vector2u myplane_size = myplane.getImage_size();
@@ -50,12 +53,18 @@ int main(int, char const**)
         }
         myplane.moving(event);
 //        if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::LAlt) {
-            time = clock.getElapsedTime();
-            if((double)time.asSeconds()>0.1){
+            time1 = clock1.getElapsedTime();
+            if((double)time1.asSeconds()>0.1){
                 myweapon.fire(event);
-                clock.restart();
+                clock1.restart();
+        }
+        time2 = clock2.getElapsedTime();
+        if ((double)time2.asSeconds()>1) {
+            army.add();
+            clock2.restart();
         }
         myweapon.fly();
+        army.moving();
         window.refresh();
         
     }
