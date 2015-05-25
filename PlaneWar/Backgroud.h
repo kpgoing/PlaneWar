@@ -31,11 +31,17 @@ public:
     void touchenemy();
     bool touchbullet();
     void touchhero();
+    void addscore(int);
+    void setfont();
     static sf::RenderWindow window;
 private:
     sf::Texture texture;
     sf::Sprite sprite;
     sf::Sprite *plane;
+    sf::String str = "SCORE:";
+    sf::Text *text;
+    sf::Font font;
+    int sumscore = 0;
     std::vector<Bullet*> *bullets;
     std::vector<Enemy*> *enemys;
 };

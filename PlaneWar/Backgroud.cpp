@@ -8,6 +8,7 @@
 
 #include "Backgroud.h"       
 #include <iostream>
+#include <string>
 using namespace std;
 sf::RenderWindow Backgroud::window(sf::VideoMode(480,800),"plane");
 Backgroud::Backgroud()
@@ -16,6 +17,10 @@ Backgroud::Backgroud()
         return EXIT_FAILURE;
     }
     sprite.setTexture(texture);
+    if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
+        return EXIT_FAILURE;
+    }
+    text = new sf::Text(str, font, 30);
 };
 sf::RenderWindow& Backgroud::getwindow()
 {
@@ -33,13 +38,21 @@ void Backgroud::setenemys(std::vector<Enemy*> *p)
 {
     enemys = p;
 }
+void Backgroud::addscore(int score)
+{
+    sumscore +=score;
+    str ="SCORE:"+ std::to_string(sumscore);
+    text->setString(str);
+    
+}
+
 void Backgroud::refresh()
 {
     window.clear();
    
     window.draw(sprite);
     window.draw(*plane);
-    
+    window.draw(*text);
     for(auto &a:(*bullets))
     {
         window.draw(*a);
@@ -75,8 +88,9 @@ void Backgroud::touch()
     for(auto &a:(*bullets))
     {
         for (auto i = enemys->begin(); i<enemys->end(); i++) {
-            if (a->getGlobalBounds().intersects((*i)->getGlobalBounds())) {
+            if ((!(*i)->isdown())&&a->getGlobalBounds().intersects((*i)->getGlobalBounds())) {
                 (*i)->down();
+                addscore(10);
             a->setuse(true);
             }
         }
@@ -85,8 +99,10 @@ void Backgroud::touch()
 void Backgroud::touchhero()
 {
     for (auto i = enemys->begin(); i<enemys->end(); i++) {
-        if (plane->getGlobalBounds().intersects((*i)->getGlobalBounds())) {
+        if ((!(*i)->isdown())&&plane->getGlobalBounds().intersects((*i)->getGlobalBounds())) {
             (*i)->down();
+            addscore(20);
+            
         }
 }
 }

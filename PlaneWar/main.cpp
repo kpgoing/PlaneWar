@@ -20,6 +20,8 @@ int main(int, char const**)
     Weapon myweapon(&myplane);
     sf::Vector2u myplane_size = myplane.getImage_size();
     myplane.setPosition((screen_size.x-myplane_size.x)/2,screen_size.y-myplane_size.y);
+    
+ 
     sf::Music music;
     sf::Music music_bullet;
     sf::Music music_down;
