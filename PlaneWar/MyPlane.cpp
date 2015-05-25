@@ -123,4 +123,11 @@ void MyPlane::moving(sf::Event event)
             }
     }
 }
-//void my
+//void MyPlane::setweapon(Weapon * pweapon)
+//{
+//    weapon = pweapon;
+//}
+//Weapon* MyPlane::useweapon()
+//{
+//    return weapon;
+//}

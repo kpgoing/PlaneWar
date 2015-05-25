@@ -13,25 +13,30 @@
 #include <SFML/Window.hpp>
 #include <vector>
 #include "ResourcePath.hpp"
+#include "Enemy1.h"
+#include "Enemy2.h"
+#include "Bullet.h"
 class Backgroud
 {
 public:
+     friend class MyPlane;
     Backgroud();
-//    void setbullets(std::vector<sf::Sprite*> *);
-    friend class MyPlane;
-//    void draw(sf::Sprite);
+    void setbullets(std::vector<Bullet*> *);
+    void setenemys(std::vector<Enemy*> *);
     sf::RenderWindow& getwindow();
-//    void showbackground();
-    void addsprite(sf::Sprite*);
     void refresh();
     void addplane(sf::Sprite*);
+    void check();
+    void touch();
+    void touchenemy();
+    bool touchbullet();
+    void touchhero();
     static sf::RenderWindow window;
 private:
     sf::Texture texture;
     sf::Sprite sprite;
     sf::Sprite *plane;
-//    std::vector<sf::Sprite*> *bullets;
-//    std::vector<sf::Sprite*> *enemys;
-    std::vector<sf::Sprite*> sprites;
+    std::vector<Bullet*> *bullets;
+    std::vector<Enemy*> *enemys;
 };
 #endif /* defined(__PlaneWar__Backgroud__) */

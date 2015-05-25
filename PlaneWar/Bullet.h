@@ -15,10 +15,12 @@ class Bullet: public sf::Sprite
 {
 public:
     Bullet();
-
+    void setuse(bool);
+    bool getuse();
     void check();
 private:
     sf::Texture  texture;
+    bool use = false;
     
 };
 #endif /* defined(__PlaneWar__Bullet__) */

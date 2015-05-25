@@ -27,7 +27,9 @@ public:
     void move_up();
     void move_down();
     void moving(sf::Event);
-//    void fire();
+//    void setweapon(Weapon*);
+//    Weapon* useweapon();
+    //    void fire();
     void setowner(Backgroud *);
     Backgroud* getowner();
 //    sf::Vector2u getSize();
@@ -38,6 +40,7 @@ private:
     std::vector<sf::Sprite*> bullets;
     Backgroud *pwindow;
     int i = 0;
-    int speed = 3;
+    int speed =1;
+//    Weapon *weapon;
 };
 #endif /* defined(__PlaneWar__MyPlane__) */

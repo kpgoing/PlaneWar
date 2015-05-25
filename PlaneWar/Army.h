@@ -11,7 +11,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <vector>
-#include "Enemy.h"
+#include "Enemy1.h"
+#include "Enemy2.h"
 #include "Backgroud.h"
 class Army
 {
@@ -23,5 +24,6 @@ public:
 private:
     std::vector<Enemy*> enemys;
     Backgroud *background;
+    int i = 0;
 };
 #endif /* defined(__PlaneWar__Army__) */

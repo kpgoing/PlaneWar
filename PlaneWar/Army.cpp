@@ -9,12 +9,26 @@
 #include "Army.h"
 void Army::add()
 {
+    while (i%4==0) {
+        enemys.push_back(new Enemy1());
+        ((Enemy1*)(*(enemys.end()-1)))->setimage();
+        i++;
+        return;
+    }
+    while (i%5==0) {
+        enemys.push_back(new Enemy2());
+        ((Enemy2*)(*(enemys.end()-1)))->setimage();
+        i++;
+        return;
+    }
     enemys.push_back(new Enemy());
-    background->addsprite(*(enemys.end()-1));
+    i++;
 }
+
 void Army::setowner(Backgroud * pbackground)
 {
     background = pbackground;
+    pbackground->setenemys(&enemys);
 }
 void Army::moving()
 {
@@ -23,10 +37,10 @@ void Army::moving()
         a->move(0, 1);
     }
 }
-//void Army::down()
+//void Army::fire()
 //{
-//    for(auto& a:enemys)
+//    for(auto&a:enemys)
 //    {
-//        a->down();
+//        a->useweapon()->fire();
 //    }
 //}

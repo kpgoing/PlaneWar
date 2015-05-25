@@ -13,11 +13,11 @@ class Weapon
 {
 public:
     Weapon(MyPlane*);
-    void fire(sf::Event);
+    bool fire(sf::Event);
     void fly();
 private:
     MyPlane *myplane;
-    std::vector<sf::Sprite*> bullets;
+    std::vector<Bullet*> bullets;
     int i = 0;
 };
 #endif /* defined(__PlaneWar__Weapon__) */

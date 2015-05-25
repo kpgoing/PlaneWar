@@ -14,3 +14,11 @@ Bullet::Bullet()
     }
     this->setTexture(texture);
 }
+void Bullet::setuse(bool b)
+{
+    use = b;
+}
+bool Bullet::getuse()
+{
+    return use;
+}
