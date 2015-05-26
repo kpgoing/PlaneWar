@@ -27,7 +27,7 @@ public:
 private:
     std::vector<Enemy*> enemys;
     Backgroud *background;
-    std::vector<Bullet*> enemybullets;
+    std::vector<Weapon*> enemyweapons;
     int i = 0;
 };
 #endif /* defined(__PlaneWar__Army__) */

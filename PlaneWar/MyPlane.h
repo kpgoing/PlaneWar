@@ -17,6 +17,7 @@ class MyPlane :public Plane
 {
 public:
     MyPlane(std::string name = "shoot.png",sf::IntRect intrect = sf::IntRect(0, 99, 102, 126)):Plane(name,intrect){}
+        
     bool checkleft();
     bool checkright();
     bool checkup();

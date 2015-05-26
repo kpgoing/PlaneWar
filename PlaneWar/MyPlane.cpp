@@ -91,10 +91,9 @@ void MyPlane::moving(sf::Event event)
          }
     }
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right) {
-        if (!(position.x >=480-image_size.x)) {
+        if (!(position.x>=480-plane_size.x)) {
             this->move_right();
         }
-        this->move_right();
     }
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Up) {
         if (!(position.y<= 0)) {
@@ -102,7 +101,7 @@ void MyPlane::moving(sf::Event event)
         }
     }
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Down) {
-        if (!(position.y >= 800-image_size.y)) {
+        if (!(position.y >= 800-plane_size.y)) {
        this->move_down();
             }
     }

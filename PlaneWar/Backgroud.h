@@ -24,7 +24,6 @@ public:
      friend class MyPlane;
     Backgroud();
     void setbullets(std::vector<Bullet*> *);
-    void setenemybullets(std::vector<Bullet*> *);
     void setenemys(std::vector<Enemy*> *);
     sf::RenderWindow& getwindow();
     void refresh();
@@ -38,6 +37,7 @@ public:
     void addscore(int);
     void setfont();
     void isover();
+    void setenemyweapons(std::vector<Weapon*>*);
     MyPlane& getmyplane()
     {
         return plane;
@@ -53,7 +53,7 @@ private:
     int sumscore = 0;
     std::vector<Bullet*> *bullets;
     std::vector<Enemy*> *enemys;
-    std::vector<Bullet*> *enemybullets;
+    std::vector<Weapon*> *enemyweapons;
     sf::Vector2u screen_size =sf::Vector2u(SCREEN_WIDTH,SCREEN_HIGTH);
 };
 #endif /* defined(__PlaneWar__Backgroud__) */

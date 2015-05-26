@@ -38,6 +38,10 @@ void Backgroud::setenemys(std::vector<Enemy*> *p)
 {
     enemys = p;
 }
+void Backgroud::setenemyweapons(std::vector<Weapon*> *p)
+{
+    enemyweapons = p;
+}
 void Backgroud::addscore(int score)
 {
     sumscore +=score;
@@ -52,7 +56,6 @@ void Backgroud::refresh()
    
     window.draw(sprite);
     window.draw(plane);
-    window.draw(*text);
     for(auto &a:(*bullets))
     {
         window.draw(*a);
@@ -60,11 +63,20 @@ void Backgroud::refresh()
     for(auto &a:(*enemys))
     {
         window.draw(*a);
-        for(auto &b:(((a)->getweapon())->bullets))
+//        for(auto &b:(((a)->getweapon())->bullets))
+//        {
+//            window.draw(*b);
+//        }
+    }
+    for(auto &a:*enemyweapons)
+    {
+        for(auto&b:a->bullets)
         {
             window.draw(*b);
         }
     }
+    
+    window.draw(*text);
     window.display();
 }
 void Backgroud::check()
@@ -77,21 +89,20 @@ void Backgroud::check()
         }
     }
     
-    for (auto i = (enemys->begin()); i<
-         (enemys->end()); i++) {
+    for (auto i = (enemys->begin()); i<(enemys->end()); i++) {
         if ((*i)->getPosition().y>800) {
             delete *i;
             enemys->erase(i);
             
         }
     }
-    for(auto &a:(*enemys))
+    for(auto &a:(*enemyweapons))
     {
-        for(auto i = (((a)->getweapon())->bullets).begin();i<(((a)->getweapon())->bullets).end();i++)
+        for(auto i = (a->bullets).begin();i<(a->bullets).end();i++)
         {
             if ((*i)->getPosition().y>800) {
                 delete *i;
-                (((a)->getweapon())->bullets).erase(i);
+                a->bullets.erase(i);
                 
             }
         }
@@ -107,7 +118,7 @@ void Backgroud::touch()
             if ((!(*i)->isdown())&&a->getGlobalBounds().intersects((*i)->getGlobalBounds())) {
                 (*i)->setdownbegin(true);
                 addscore(10);
-            a->setuse(true);
+               a->setuse(true);
             }
         }
     }
@@ -118,7 +129,6 @@ void Backgroud::touchhero()
         if ((!(*i)->isdown())&&plane.getGlobalBounds().intersects((*i)->getGlobalBounds())) {
             (*i)->setdownbegin(true);
             plane.down();
-            addscore(20);
             
         }
 }
@@ -146,13 +156,13 @@ bool Backgroud::touchbullet()
 }
 void Backgroud::enemybulletstouch()
 {
-    for(auto &a:(*enemys))
+    for(auto &a:(*enemyweapons))
     {
-        for(auto i = (((a)->getweapon())->bullets).begin();i<(((a)->getweapon())->bullets).end();i++)
+        for(auto i =((a->bullets).begin());i<((a->bullets).end());i++)
         {
             if ((*i)->getGlobalBounds().intersects(plane.getGlobalBounds())) {
                 delete *i;
-                (((a)->getweapon())->bullets).erase(i);
+                (a->bullets).erase(i);
                 plane.down();
             }
         }

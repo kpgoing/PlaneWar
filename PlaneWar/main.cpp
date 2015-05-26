@@ -50,7 +50,7 @@ int main(int, char const**)
                 clock1.restart();
         }
         time2 = clock2.getElapsedTime();
-        if ((double)time2.asSeconds()>0.5) {
+        if ((double)time2.asSeconds()>1) {
             army.add();
             army.fire();
             clock2.restart();
@@ -69,7 +69,7 @@ int main(int, char const**)
             music_down.play();
         }
         time5 = clock5.getElapsedTime();
-        if(time5.asSeconds()>0.3&&jishu<5){
+        if(time5.asSeconds()>0.1&&jishu<5){
             army.down();
             jishu++;
             clock5.restart();
@@ -84,11 +84,11 @@ int main(int, char const**)
         window.refresh();
         window.enemybulletstouch();
         time4 = clock4.getElapsedTime();
-//        if ((double)time4.asSeconds()>0.5) {
-//            window.isover();
-//            clock4.restart();
-//            
-//        }
+        if ((double)time4.asSeconds()>0.5) {
+            window.isover();
+            clock4.restart();
+            
+        }
     }
     return EXIT_SUCCESS;
 }

@@ -12,17 +12,18 @@ void Army::add()
 {
     while (i%4==0) {
         enemys.push_back(new Enemy1());
-//        ((Enemy1*)(*(enemys.end()-1)))->setimage();
+        enemyweapons.push_back(((*(enemys.end()-1)))->getweapon());
         i++;
         return;
     }
     while (i%5==0) {
         enemys.push_back(new Enemy2());
-//        ((Enemy2*)(*(enemys.end()-1)))->setimage();
+        enemyweapons.push_back(((*(enemys.end()-1)))->getweapon());
         i++;
         return;
     }
     enemys.push_back(new Enemy());
+     enemyweapons.push_back(((*(enemys.end()-1)))->getweapon());
     i++;
 }
 
@@ -30,6 +31,7 @@ void Army::setowner(Backgroud * pbackground)
 {
     background = pbackground;
     pbackground->setenemys(&enemys);
+    pbackground->setenemyweapons(&enemyweapons);
 }
 void Army::moving()
 {
@@ -48,10 +50,11 @@ bool Army::fire()
 }
 bool Army::bulletfly()
 {
-    for(auto&a:enemys)
+    for(auto&a:enemyweapons)
     {
-        a->getweapon()->fly2();
+        a->fly2();
     }
+    
     return true;
 }
 void Army::down()
