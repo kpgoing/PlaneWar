@@ -29,6 +29,7 @@ sf::RenderWindow& Backgroud::getwindow()
 void Backgroud::addplane(sf::Sprite * pplane)
 {
     plane =pplane;
+    std::cout<<"ok"<<std::endl;
 }
 void Backgroud::setbullets(std::vector<Bullet*> *p)
 {
@@ -101,6 +102,7 @@ void Backgroud::touchhero()
     for (auto i = enemys->begin(); i<enemys->end(); i++) {
         if ((!(*i)->isdown())&&plane->getGlobalBounds().intersects((*i)->getGlobalBounds())) {
             (*i)->down();
+            
             addscore(20);
             
         }

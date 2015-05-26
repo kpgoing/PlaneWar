@@ -12,13 +12,13 @@
 class Enemy2:public Enemy
 {
 public:
-    Enemy2();
+    Enemy2(std::string name = "shoot.png",sf::IntRect intrect = sf::IntRect(335, 750,169, 258)):Enemy(name,intrect){}
+
     virtual bool down();
-    virtual bool isdown();
-    virtual void setimage();
+//    virtual void setimage();
 private:
     sf::Texture texture;
     sf::Image image;
-    bool downbool = false;
+//    bool downbool = false;
 };
 #endif /* defined(__PlaneWar__Enemy2__) */

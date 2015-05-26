@@ -8,16 +8,18 @@
 
 #ifndef __PlaneWar__Weapon__
 #define __PlaneWar__Weapon__
-#include "MyPlane.h"
+#include "Bullet.h"
 class Weapon
 {
 public:
-    Weapon(MyPlane*);
-    bool fire(sf::Event);
+//    Weapon(MyPlane*);
+    friend class  Plane;
+    bool fire(sf::Event,sf::Vector2u,sf::Sprite*);
+    bool fire2();
     void fly();
+     std::vector<Bullet*> bullets;
 private:
-    MyPlane *myplane;
-    std::vector<Bullet*> bullets;
+//    MyPlane *myplane;
     int i = 0;
 };
 #endif /* defined(__PlaneWar__Weapon__) */

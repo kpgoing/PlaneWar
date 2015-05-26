@@ -13,12 +13,11 @@ int main(int, char const**)
     Army army;
     army.setowner(&window);
     sf::Vector2u screen_size(SCREEN_WIDTH,SCREEN_HIGTH);
-    MyPlane myplane;
+    MyPlane myplane("shoot.png",sf::IntRect(0, 99, 102, 126));
     sf::Clock clock1,clock2,clock3;
     sf::Time time1 ,time2,time3;
     myplane.setowner(&window);
-    Weapon myweapon(&myplane);
-    sf::Vector2u myplane_size = myplane.getImage_size();
+    sf::Vector2u myplane_size = myplane.getsize();
     myplane.setPosition((screen_size.x-myplane_size.x)/2,screen_size.y-myplane_size.y);
     
  
@@ -32,7 +31,7 @@ int main(int, char const**)
     if (!music_bullet.openFromFile(resourcePath()+"bullet.ogg")) {
         return EXIT_FAILURE;
     }
-     window.addplane(&myplane);
+    window.addplane(&myplane);
     if (!music.openFromFile(resourcePath()+"game_music.ogg")) {
         return EXIT_FAILURE;
     }
@@ -48,7 +47,7 @@ int main(int, char const**)
         myplane.moving(event);
             time1 = clock1.getElapsedTime();
             if((double)time1.asSeconds()>0.1){
-                if(myweapon.fire(event))
+                if(myplane.fire(event))
                     music_bullet.play();
                 clock1.restart();
         }
@@ -62,7 +61,7 @@ int main(int, char const**)
             window.touchenemy();
             clock3.restart();
         }
-        myweapon.fly();
+        myplane.buttlesmoving();
         army.moving();
         window.check();
         if(window.touchbullet())

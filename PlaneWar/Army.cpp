@@ -11,13 +11,13 @@ void Army::add()
 {
     while (i%4==0) {
         enemys.push_back(new Enemy1());
-        ((Enemy1*)(*(enemys.end()-1)))->setimage();
+//        ((Enemy1*)(*(enemys.end()-1)))->setimage();
         i++;
         return;
     }
     while (i%5==0) {
         enemys.push_back(new Enemy2());
-        ((Enemy2*)(*(enemys.end()-1)))->setimage();
+//        ((Enemy2*)(*(enemys.end()-1)))->setimage();
         i++;
         return;
     }

@@ -11,13 +11,12 @@
 #include "ResourcePath.hpp"
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-#include "Bullet.h"
+#include "Plane.h"
 #include "Backgroud.h"
-class MyPlane :public sf::Sprite
+class MyPlane :public Plane
 {
 public:
-    MyPlane();
-    sf::Vector2u getImage_size();
+    MyPlane(std::string name,sf::IntRect intrect):Plane(name,intrect){}
     bool checkleft();
     bool checkright();
     bool checkup();
@@ -27,10 +26,8 @@ public:
     void move_up();
     void move_down();
     void moving(sf::Event);
-//    void setweapon(Weapon*);
-//    Weapon* useweapon();
-    //    void fire();
     void setowner(Backgroud *);
+    virtual bool down();
     Backgroud* getowner();
 //    sf::Vector2u getSize();
 private:
@@ -41,6 +38,6 @@ private:
     Backgroud *pwindow;
     int i = 0;
     int speed =1;
-//    Weapon *weapon;
+    bool downbool = false;
 };
 #endif /* defined(__PlaneWar__MyPlane__) */

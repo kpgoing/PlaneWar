@@ -13,6 +13,7 @@
 #include <vector>
 #include "Enemy1.h"
 #include "Enemy2.h"
+#include "Enemy.h"
 #include "Backgroud.h"
 class Army
 {
