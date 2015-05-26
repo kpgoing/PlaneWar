@@ -56,8 +56,8 @@
 		2C9AA7D51B11CFB70038C21C /* Enemy1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy1.h; sourceTree = "<group>"; };
 		2C9AA7D71B11D1390038C21C /* Army1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Army1.cpp; sourceTree = "<group>"; };
 		2C9AA7D81B11D1390038C21C /* Army1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Army1.h; sourceTree = "<group>"; };
-		2C9AA7DD1B11D9590038C21C /* Enemy2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy2.cpp; sourceTree = "<group>"; };
-		2C9AA7DE1B11D9590038C21C /* Enemy2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy2.h; sourceTree = "<group>"; };
+		2C9AA7DD1B11D9590038C21C /* Enemy2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Enemy2.cpp; path = ../Enemy2.cpp; sourceTree = "<group>"; };
+		2C9AA7DE1B11D9590038C21C /* Enemy2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Enemy2.h; path = ../Enemy2.h; sourceTree = "<group>"; };
 		2CC641101B12DB86006E3F82 /* get_bomb.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = get_bomb.ogg; sourceTree = "<group>"; };
 		2CC641121B12DD91006E3F82 /* bullet.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = bullet.ogg; sourceTree = "<group>"; };
 		2CC641141B12DDE1006E3F82 /* enemy3_down.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = enemy3_down.ogg; sourceTree = "<group>"; };
@@ -84,8 +84,6 @@
 		2C00F0721B0B361600AD7B19 = {
 			isa = PBXGroup;
 			children = (
-				2C9AA7DD1B11D9590038C21C /* Enemy2.cpp */,
-				2C9AA7DE1B11D9590038C21C /* Enemy2.h */,
 				2C00F07E1B0B361600AD7B19 /* PlaneWar */,
 				2C00F07D1B0B361600AD7B19 /* Products */,
 			);
@@ -102,6 +100,8 @@
 		2C00F07E1B0B361600AD7B19 /* PlaneWar */ = {
 			isa = PBXGroup;
 			children = (
+				2C9AA7DD1B11D9590038C21C /* Enemy2.cpp */,
+				2C9AA7DE1B11D9590038C21C /* Enemy2.h */,
 				2C9AA7D41B11CFB70038C21C /* Enemy1.cpp */,
 				2C9AA7D51B11CFB70038C21C /* Enemy1.h */,
 				2C0963A01B11BF2600794DD7 /* Enemy.cpp */,
