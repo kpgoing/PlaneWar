@@ -13,8 +13,8 @@ int main(int, char const**)
     Army army;
     army.setowner(&window);
 //    sf::Vector2u screen_size(SCREEN_WIDTH,SCREEN_HIGTH);
-    sf::Clock clock1,clock2,clock3;
-    sf::Time time1 ,time2,time3;
+    sf::Clock clock1,clock2,clock3,clock4,clock5;
+    sf::Time time1 ,time2,time3,time4,time5;
 //    sf::Vector2u myplane_size = myplane.getsize();
 //    myplane.setPosition((screen_size.x-myplane_size.x)/2,screen_size.y-myplane_size.y);
     
@@ -22,6 +22,7 @@ int main(int, char const**)
     sf::Music music;
     sf::Music music_bullet;
     sf::Music music_down;
+    int jishu = 1;
     if (!music_down.openFromFile(resourcePath()+"enemy3_down.ogg")) {
         return EXIT_FAILURE;
     }
@@ -54,11 +55,11 @@ int main(int, char const**)
             army.fire();
             clock2.restart();
         }
-        time3 = clock3.getElapsedTime();
-        if ((double)time3.asSeconds()>0.5) {
-            window.touchenemy();
-            clock3.restart();
-        }
+//        time3 = clock3.getElapsedTime();
+//        if ((double)time3.asSeconds()>0.5) {
+//            window.touchenemy();
+//            clock3.restart();
+//        }
         window.getmyplane().buttlesmoving();
         army.moving();
         window.check();
@@ -67,11 +68,27 @@ int main(int, char const**)
         {
             music_down.play();
         }
+        time5 = clock5.getElapsedTime();
+        if(time5.asSeconds()>0.3&&jishu<5){
+            army.down();
+            jishu++;
+            clock5.restart();
+            
+        }
+        if (jishu==5) {
+            jishu=1;
+        }
+        window.touchenemy();
         window.touch();
         window.touchhero();
         window.refresh();
         window.enemybulletstouch();
-        window.isover();
+        time4 = clock4.getElapsedTime();
+//        if ((double)time4.asSeconds()>0.5) {
+//            window.isover();
+//            clock4.restart();
+//            
+//        }
     }
     return EXIT_SUCCESS;
 }

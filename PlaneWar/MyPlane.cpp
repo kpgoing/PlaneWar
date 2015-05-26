@@ -110,6 +110,6 @@ void MyPlane::moving(sf::Event event)
 bool MyPlane::down()
 {
     this->setTextureRect(sf::IntRect(330, 498,102, 126));
-    downbool  = true;
+    downbegin  = true;
     return true;
 }

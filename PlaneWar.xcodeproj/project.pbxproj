@@ -22,8 +22,8 @@
 		2C91FC401B0B5ED200EEDA44 /* 主飞机.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C91FC3F1B0B5ED200EEDA44 /* 主飞机.png */; };
 		2C9AA7D61B11CFB70038C21C /* Enemy1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C9AA7D41B11CFB70038C21C /* Enemy1.cpp */; };
 		2C9AA7D91B11D1390038C21C /* Army1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C9AA7D71B11D1390038C21C /* Army1.cpp */; };
-		2C9AA7DF1B11D9590038C21C /* Enemy2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C9AA7DD1B11D9590038C21C /* Enemy2.cpp */; };
-		2CBE9ADA1B1334DC00262AF9 /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CBE9AD81B1334DC00262AF9 /* Plane.cpp */; };
+		2CAD06681B142E2500B1BC55 /* Plane.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD06671B142E2500B1BC55 /* Plane.cpp */; };
+		2CAD066B1B142E4600B1BC55 /* Enemy2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2CAD066A1B142E4600B1BC55 /* Enemy2.cpp */; };
 		2CC641111B12DB86006E3F82 /* get_bomb.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 2CC641101B12DB86006E3F82 /* get_bomb.ogg */; };
 		2CC641131B12DD91006E3F82 /* bullet.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 2CC641121B12DD91006E3F82 /* bullet.ogg */; };
 		2CC641151B12DDE1006E3F82 /* enemy3_down.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 2CC641141B12DDE1006E3F82 /* enemy3_down.ogg */; };
@@ -57,10 +57,10 @@
 		2C9AA7D51B11CFB70038C21C /* Enemy1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy1.h; sourceTree = "<group>"; };
 		2C9AA7D71B11D1390038C21C /* Army1.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Army1.cpp; sourceTree = "<group>"; };
 		2C9AA7D81B11D1390038C21C /* Army1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Army1.h; sourceTree = "<group>"; };
-		2C9AA7DD1B11D9590038C21C /* Enemy2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy2.cpp; sourceTree = "<group>"; };
-		2C9AA7DE1B11D9590038C21C /* Enemy2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy2.h; sourceTree = "<group>"; };
-		2CBE9AD81B1334DC00262AF9 /* Plane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plane.cpp; sourceTree = "<group>"; };
-		2CBE9AD91B1334DC00262AF9 /* Plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
+		2CAD06671B142E2500B1BC55 /* Plane.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Plane.cpp; sourceTree = "<group>"; };
+		2CAD06691B142E3600B1BC55 /* Enemy2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enemy2.h; sourceTree = "<group>"; };
+		2CAD066A1B142E4600B1BC55 /* Enemy2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy2.cpp; sourceTree = "<group>"; };
+		2CAD066C1B14337A00B1BC55 /* Plane.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Plane.h; sourceTree = "<group>"; };
 		2CC641101B12DB86006E3F82 /* get_bomb.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = get_bomb.ogg; sourceTree = "<group>"; };
 		2CC641121B12DD91006E3F82 /* bullet.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = bullet.ogg; sourceTree = "<group>"; };
 		2CC641141B12DDE1006E3F82 /* enemy3_down.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = enemy3_down.ogg; sourceTree = "<group>"; };
@@ -87,10 +87,6 @@
 		2C00F0721B0B361600AD7B19 = {
 			isa = PBXGroup;
 			children = (
-				2CBE9AD81B1334DC00262AF9 /* Plane.cpp */,
-				2CBE9AD91B1334DC00262AF9 /* Plane.h */,
-				2C9AA7DD1B11D9590038C21C /* Enemy2.cpp */,
-				2C9AA7DE1B11D9590038C21C /* Enemy2.h */,
 				2C00F07E1B0B361600AD7B19 /* PlaneWar */,
 				2C00F07D1B0B361600AD7B19 /* Products */,
 			);
@@ -107,6 +103,10 @@
 		2C00F07E1B0B361600AD7B19 /* PlaneWar */ = {
 			isa = PBXGroup;
 			children = (
+				2CAD066A1B142E4600B1BC55 /* Enemy2.cpp */,
+				2CAD06671B142E2500B1BC55 /* Plane.cpp */,
+				2CAD066C1B14337A00B1BC55 /* Plane.h */,
+				2CAD06691B142E3600B1BC55 /* Enemy2.h */,
 				2C9AA7D41B11CFB70038C21C /* Enemy1.cpp */,
 				2C9AA7D51B11CFB70038C21C /* Enemy1.h */,
 				2C0963A01B11BF2600794DD7 /* Enemy.cpp */,
@@ -256,15 +256,15 @@
 			files = (
 				2C0963A21B11BF2600794DD7 /* Enemy.cpp in Sources */,
 				2CD602031B0B75DE006FB39F /* Backgroud.cpp in Sources */,
+				2CAD06681B142E2500B1BC55 /* Plane.cpp in Sources */,
 				2CDF43451B0C7CB300279FFA /* Weapon.cpp in Sources */,
 				2CD0489E1B11A0B900A3EE70 /* Army.cpp in Sources */,
 				2C9AA7D61B11CFB70038C21C /* Enemy1.cpp in Sources */,
 				2C00F0851B0B361600AD7B19 /* main.cpp in Sources */,
-				2CBE9ADA1B1334DC00262AF9 /* Plane.cpp in Sources */,
 				2C00F0821B0B361600AD7B19 /* ResourcePath.mm in Sources */,
 				2CD602001B0B6C25006FB39F /* MyPlane.cpp in Sources */,
 				2C9AA7D91B11D1390038C21C /* Army1.cpp in Sources */,
-				2C9AA7DF1B11D9590038C21C /* Enemy2.cpp in Sources */,
+				2CAD066B1B142E4600B1BC55 /* Enemy2.cpp in Sources */,
 				2C37A5AC1B0B66AB000D19C5 /* Bullet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

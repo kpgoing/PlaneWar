@@ -22,12 +22,20 @@ public:
     void buttlesmoving();
     sf::Vector2u getsize();
     virtual bool down(){
-        downbool  = true;
+    
         return true;}
     bool isdown();
     Weapon* getweapon()
     {
         return weapon;
+    }
+     void setdownbegin(bool b)
+    {
+        downbegin = b;
+    }
+    bool isdownover()
+    {
+        return downover;
     }
 private:
     
@@ -36,7 +44,8 @@ private:
     sf::Texture  texture;
 protected:
     sf::Vector2u plane_size;
-      Weapon *weapon;
-      bool downbool;
+    Weapon *weapon;
+    bool downbegin;
+    bool downover;
 };
 #endif /* defined(__PlaneWar__Plane__) */

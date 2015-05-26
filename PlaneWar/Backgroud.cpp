@@ -85,6 +85,18 @@ void Backgroud::check()
             
         }
     }
+    for(auto &a:(*enemys))
+    {
+        for(auto i = (((a)->getweapon())->bullets).begin();i<(((a)->getweapon())->bullets).end();i++)
+        {
+            if ((*i)->getPosition().y>800) {
+                delete *i;
+                (((a)->getweapon())->bullets).erase(i);
+                
+            }
+        }
+    }
+
 }
 void Backgroud::touch()
 {
@@ -93,7 +105,7 @@ void Backgroud::touch()
     {
         for (auto i = enemys->begin(); i<enemys->end(); i++) {
             if ((!(*i)->isdown())&&a->getGlobalBounds().intersects((*i)->getGlobalBounds())) {
-                (*i)->down();
+                (*i)->setdownbegin(true);
                 addscore(10);
             a->setuse(true);
             }
@@ -104,7 +116,7 @@ void Backgroud::touchhero()
 {
     for (auto i = enemys->begin(); i<enemys->end(); i++) {
         if ((!(*i)->isdown())&&plane.getGlobalBounds().intersects((*i)->getGlobalBounds())) {
-            (*i)->down();
+            (*i)->setdownbegin(true);
             plane.down();
             addscore(20);
             
@@ -113,7 +125,7 @@ void Backgroud::touchhero()
 }
 void Backgroud::touchenemy(){
     for (auto i = enemys->begin(); i<enemys->end(); i++) {
-        if ((*i)->isdown()) {
+        if ((*i)->isdownover()) {
             delete *i;
             enemys->erase(i);
         }

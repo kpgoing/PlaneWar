@@ -17,8 +17,8 @@ Plane::Plane(std::string name,sf::IntRect intrect)
     this->setTextureRect(intrect);
     plane_size = sf::Vector2u(intrect.width,intrect.height);
     weapon = new Weapon();
-    downbool = false;
-    
+    downbegin = false;
+    downover = false;
 }
 bool Plane::fire(sf::Event event)
 {
@@ -34,5 +34,5 @@ void Plane::buttlesmoving()
 }
 bool Plane::isdown()
 {
-    return downbool;
+    return downbegin;
 }

@@ -7,6 +7,7 @@
 //
 
 #include "Army.h"
+#include <iostream>
 void Army::add()
 {
     while (i%4==0) {
@@ -52,4 +53,15 @@ bool Army::bulletfly()
         a->getweapon()->fly2();
     }
     return true;
+}
+void Army::down()
+{
+    for(auto&a:enemys)
+    {
+        if (a->isdown()) {
+            std::cout<<"Aaa"<<std::endl;
+            a->down();
+        }
+    }
+
 }

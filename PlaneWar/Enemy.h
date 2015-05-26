@@ -27,7 +27,10 @@ public:
 private:
     sf::Texture texture;
     sf::Image image;
-    
+    sf::Clock clock;
+    sf::Time sftime;
+protected:
+    int downstate = 1;
 //    bool downbool = false;
 };
 #endif /* defined(__PlaneWar__Enemy__) */
