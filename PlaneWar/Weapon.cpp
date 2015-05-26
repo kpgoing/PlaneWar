@@ -7,20 +7,17 @@
 //
 
 #include "Weapon.h"
-Weapon::Weapon(MyPlane *plane)
-{
-    myplane = plane;
-    myplane->getowner()->setbullets(&bullets);
-}
-bool Weapon::fire(sf::Event event)
+//Weapon::Weapon(MyPlane *plane)
+//{
+//    myplane = plane;
+//    myplane->getowner()->setbullets(&bullets);
+//}
+bool Weapon::fire(sf::Event event,sf::Vector2u plane_size, sf::Sprite*plane)
 {
     
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::LAlt) {
         bullets.push_back(new Bullet());
-    
-//        myplane->getowner()->addsprite(bullets[i]);
-        sf::Vector2u plane_size = myplane->getImage_size();
-        sf::Vector2f plane_position = myplane->getPosition();
+        sf::Vector2f plane_position = plane->getPosition();
         (*(bullets.end()-1))->setPosition(plane_size.x/2+plane_position.x,plane_position.y-20);
         
         return true;
@@ -33,4 +30,18 @@ void Weapon::fly()
     {
         a->move(0, -5);
     }
+}
+void Weapon::fly2()
+{
+    for(auto &a:bullets)
+    {
+        a->move(0, 1);
+    }
+}
+bool Weapon::fire2(sf::Vector2u plane_size, sf::Sprite*plane)
+{
+    bullets.push_back(new Bullet());
+    sf::Vector2f plane_position = plane->getPosition();
+    (*(bullets.end()-1))->setPosition(plane_size.x/2+plane_position.x,plane_position.y+100);
+    return true;
 }

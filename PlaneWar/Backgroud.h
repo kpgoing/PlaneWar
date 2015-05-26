@@ -8,6 +8,8 @@
 
 #ifndef __PlaneWar__Backgroud__
 #define __PlaneWar__Backgroud__
+#define SCREEN_WIDTH 480
+#define SCREEN_HIGTH 800
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
@@ -15,13 +17,14 @@
 #include "ResourcePath.hpp"
 #include "Enemy1.h"
 #include "Enemy2.h"
-#include "Bullet.h"
+#include "Myplane.h"
 class Backgroud
 {
 public:
      friend class MyPlane;
     Backgroud();
     void setbullets(std::vector<Bullet*> *);
+    void setenemybullets(std::vector<Bullet*> *);
     void setenemys(std::vector<Enemy*> *);
     sf::RenderWindow& getwindow();
     void refresh();
@@ -31,18 +34,26 @@ public:
     void touchenemy();
     bool touchbullet();
     void touchhero();
+    void enemybulletstouch();
     void addscore(int);
     void setfont();
+    void isover();
+    MyPlane& getmyplane()
+    {
+        return plane;
+    }
     static sf::RenderWindow window;
 private:
     sf::Texture texture;
     sf::Sprite sprite;
-    sf::Sprite *plane;
+    MyPlane plane;
     sf::String str = "SCORE:";
     sf::Text *text;
     sf::Font font;
     int sumscore = 0;
     std::vector<Bullet*> *bullets;
     std::vector<Enemy*> *enemys;
+    std::vector<Bullet*> *enemybullets;
+    sf::Vector2u screen_size =sf::Vector2u(SCREEN_WIDTH,SCREEN_HIGTH);
 };
 #endif /* defined(__PlaneWar__Backgroud__) */

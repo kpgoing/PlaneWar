@@ -13,6 +13,7 @@
 #include <vector>
 #include "Enemy1.h"
 #include "Enemy2.h"
+#include "Enemy.h"
 #include "Backgroud.h"
 class Army
 {
@@ -21,9 +22,12 @@ public:
     void add();
     void moving();
     void down();
+    bool fire();
+    bool bulletfly();
 private:
     std::vector<Enemy*> enemys;
     Backgroud *background;
+    std::vector<Bullet*> enemybullets;
     int i = 0;
 };
 #endif /* defined(__PlaneWar__Army__) */

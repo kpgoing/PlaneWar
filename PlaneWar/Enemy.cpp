@@ -9,32 +9,17 @@
 
 #include "Enemy.h"
 #include <random>
-Enemy::Enemy(){
-    if (!image.loadFromFile(resourcePath()+"shoot.png")) {
-        return EXIT_FAILURE;
-    }
-    texture.loadFromImage(image,sf::IntRect(0, 0,69, 99));
-    this->setTexture(texture);
-    std::uniform_int_distribution<unsigned> u(0,400);
-    std::default_random_engine e(time(0));
-    this->setPosition(u(e), -100);
-    downbool = false;
-}
+#include <iostream>
 bool Enemy::down()
 {
-    texture.loadFromImage(image,sf::IntRect( 534, 655,69, 95));
-    texture.loadFromImage(image,sf::IntRect( 603, 655, 69, 95));
-    texture.loadFromImage(image,sf::IntRect(  672, 653,69, 95));
-    texture.loadFromImage(image,sf::IntRect( 741, 653,69, 95));
- 
+    this->setTextureRect(sf::IntRect(267, 347,57, 51));
+    this->setTextureRect(sf::IntRect(873, 697,57, 51));
+    this->setTextureRect(sf::IntRect(267, 296,57, 51));
+    this->setTextureRect(sf::IntRect(930, 697,57, 51));
     downbool = true;
     return true;
 }
-bool Enemy::isdown()
+bool Enemy::fire2()
 {
-    return downbool;
-}
-void Enemy::setimage()
-{
-     texture.loadFromImage(image,sf::IntRect(0, 0,69, 99));
+   return  weapon->fire2(plane_size,this);
 }
