@@ -21,12 +21,13 @@ public:
         std::default_random_engine e(time(0));
         this->setPosition(u(e), -200);}
     virtual bool down();
-//    virtual void fire2();
+    virtual bool fire2();
 //    virtual void setimage();
     
 private:
     sf::Texture texture;
     sf::Image image;
+    
 //    bool downbool = false;
 };
 #endif /* defined(__PlaneWar__Enemy__) */

@@ -19,7 +19,7 @@ bool Enemy::down()
     downbool = true;
     return true;
 }
-//void Enemy::fire2()
-//{
-//    Weapon.
-//}
+bool Enemy::fire2()
+{
+   return  weapon->fire2(plane_size,this);
+}

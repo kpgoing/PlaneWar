@@ -21,15 +21,14 @@ Backgroud::Backgroud()
         return EXIT_FAILURE;
     }
     text = new sf::Text(str, font, 30);
+    plane.setowner(this);
+    sf::Vector2u myplane_size = plane.getsize();
+    plane.setPosition((screen_size.x-myplane_size.x)/2,screen_size.y-myplane_size.y);
+    setbullets(&(plane.getweapon()->bullets));
 };
 sf::RenderWindow& Backgroud::getwindow()
 {
     return window;
-}
-void Backgroud::addplane(sf::Sprite * pplane)
-{
-    plane =pplane;
-    std::cout<<"ok"<<std::endl;
 }
 void Backgroud::setbullets(std::vector<Bullet*> *p)
 {
@@ -52,7 +51,7 @@ void Backgroud::refresh()
     window.clear();
    
     window.draw(sprite);
-    window.draw(*plane);
+    window.draw(plane);
     window.draw(*text);
     for(auto &a:(*bullets))
     {
@@ -61,6 +60,10 @@ void Backgroud::refresh()
     for(auto &a:(*enemys))
     {
         window.draw(*a);
+        for(auto &b:(((a)->getweapon())->bullets))
+        {
+            window.draw(*b);
+        }
     }
     window.display();
 }
@@ -100,9 +103,9 @@ void Backgroud::touch()
 void Backgroud::touchhero()
 {
     for (auto i = enemys->begin(); i<enemys->end(); i++) {
-        if ((!(*i)->isdown())&&plane->getGlobalBounds().intersects((*i)->getGlobalBounds())) {
+        if ((!(*i)->isdown())&&plane.getGlobalBounds().intersects((*i)->getGlobalBounds())) {
             (*i)->down();
-            
+            plane.down();
             addscore(20);
             
         }
@@ -128,4 +131,33 @@ bool Backgroud::touchbullet()
         }
     }
     return panduan;
+}
+void Backgroud::enemybulletstouch()
+{
+    for(auto &a:(*enemys))
+    {
+        for(auto i = (((a)->getweapon())->bullets).begin();i<(((a)->getweapon())->bullets).end();i++)
+        {
+            if ((*i)->getGlobalBounds().intersects(plane.getGlobalBounds())) {
+                delete *i;
+                (((a)->getweapon())->bullets).erase(i);
+                plane.down();
+            }
+        }
+    }
+
+}
+void Backgroud::isover()
+{
+    if (plane.isdown()) {
+        sf::Text over("game over",font,60);
+
+        window.clear() ;
+        window.draw(over);
+        window.display();
+
+        while (true) {
+            ;
+        }
+    }
 }

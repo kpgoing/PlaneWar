@@ -25,13 +25,18 @@ public:
         downbool  = true;
         return true;}
     bool isdown();
+    Weapon* getweapon()
+    {
+        return weapon;
+    }
 private:
-    sf::Vector2u plane_size;
+    
     sf::Vector2f plane_position;
     sf::Image image;
     sf::Texture  texture;
 protected:
-      Weapon weapon;
+    sf::Vector2u plane_size;
+      Weapon *weapon;
       bool downbool;
 };
 #endif /* defined(__PlaneWar__Plane__) */

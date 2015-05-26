@@ -10,7 +10,6 @@
 void MyPlane::setowner(Backgroud *opwindow)
 {
     pwindow = opwindow;
-    pwindow->setbullets(&(weapon.bullets));
 }
 Backgroud* MyPlane::getowner()
 {
@@ -111,5 +110,6 @@ void MyPlane::moving(sf::Event event)
 bool MyPlane::down()
 {
     this->setTextureRect(sf::IntRect(330, 498,102, 126));
+    downbool  = true;
     return true;
 }

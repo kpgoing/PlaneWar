@@ -34,13 +34,22 @@ void Army::moving()
 {
     for(auto& a:enemys)
     {
-        a->move(0, 1);
+        a->move(0, 0.5);
     }
 }
-//void Army::fire()
-//{
-//    for(auto&a:enemys)
-//    {
-//        a->useweapon()->fire();
-//    }
-//}
+bool Army::fire()
+{
+    for(auto&a:enemys)
+    {
+        a->fire2();
+    }
+    return true;
+}
+bool Army::bulletfly()
+{
+    for(auto&a:enemys)
+    {
+        a->getweapon()->fly2();
+    }
+    return true;
+}

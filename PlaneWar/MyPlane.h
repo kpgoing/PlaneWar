@@ -12,11 +12,11 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Plane.h"
-#include "Backgroud.h"
+class Backgroud;
 class MyPlane :public Plane
 {
 public:
-    MyPlane(std::string name,sf::IntRect intrect):Plane(name,intrect){}
+    MyPlane(std::string name = "shoot.png",sf::IntRect intrect = sf::IntRect(0, 99, 102, 126)):Plane(name,intrect){}
     bool checkleft();
     bool checkright();
     bool checkup();
@@ -34,10 +34,8 @@ private:
     sf::Image image;
     sf::Texture  texture;
     sf::Vector2u image_size;
-    std::vector<sf::Sprite*> bullets;
     Backgroud *pwindow;
     int i = 0;
     int speed =1;
-    bool downbool = false;
 };
 #endif /* defined(__PlaneWar__MyPlane__) */

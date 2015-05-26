@@ -16,12 +16,13 @@ Plane::Plane(std::string name,sf::IntRect intrect)
     this->setTexture(texture);
     this->setTextureRect(intrect);
     plane_size = sf::Vector2u(intrect.width,intrect.height);
+    weapon = new Weapon();
     downbool = false;
     
 }
 bool Plane::fire(sf::Event event)
 {
-    return  weapon.fire(event,plane_size,this);
+    return  weapon->fire(event,plane_size,this);
 }
 sf::Vector2u Plane::getsize()
 {
@@ -29,7 +30,7 @@ sf::Vector2u Plane::getsize()
 }
 void Plane::buttlesmoving()
 {
-    weapon.fly();
+    weapon->fly();
 }
 bool Plane::isdown()
 {

@@ -12,11 +12,11 @@
 class Weapon
 {
 public:
-//    Weapon(MyPlane*);
     friend class  Plane;
     bool fire(sf::Event,sf::Vector2u,sf::Sprite*);
-    bool fire2();
+    bool fire2(sf::Vector2u plane_size, sf::Sprite*plane);
     void fly();
+    void fly2();
      std::vector<Bullet*> bullets;
 private:
 //    MyPlane *myplane;

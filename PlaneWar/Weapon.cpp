@@ -31,7 +31,17 @@ void Weapon::fly()
         a->move(0, -5);
     }
 }
-//bool Weapon::fire2()
-//{
-//    
-//}
+void Weapon::fly2()
+{
+    for(auto &a:bullets)
+    {
+        a->move(0, 1);
+    }
+}
+bool Weapon::fire2(sf::Vector2u plane_size, sf::Sprite*plane)
+{
+    bullets.push_back(new Bullet());
+    sf::Vector2f plane_position = plane->getPosition();
+    (*(bullets.end()-1))->setPosition(plane_size.x/2+plane_position.x,plane_position.y+100);
+    return true;
+}
