@@ -29,8 +29,8 @@ private:
     sf::Image image;
     sf::Clock clock;
     sf::Time sftime;
-protected:
-    int downstate = 1;
+//protected:
+//    int downstate = 1;
 //    bool downbool = false;
 };
 #endif /* defined(__PlaneWar__Enemy__) */

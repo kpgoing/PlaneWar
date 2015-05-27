@@ -17,15 +17,19 @@ Backgroud::Backgroud()
         return EXIT_FAILURE;
     }
     sprite.setTexture(texture);
-    if (!font.loadFromFile(resourcePath() + "sansation.ttf")) {
+    if (!font.loadFromFile(resourcePath() + "Promses Broken Dream1.ttf")) {
         return EXIT_FAILURE;
     }
     text = new sf::Text(str, font, 30);
+    text->setPosition(0,10);
     plane.setowner(this);
     sf::Vector2u myplane_size = plane.getsize();
     plane.setPosition((screen_size.x-myplane_size.x)/2,screen_size.y-myplane_size.y);
     setbullets(&(plane.getweapon()->bullets));
-};
+    life = new sf::Text(lifestr,font,30);
+    life->setPosition(400, 10);
+    life->setColor(sf::Color::Red);
+}
 sf::RenderWindow& Backgroud::getwindow()
 {
     return window;
@@ -77,6 +81,7 @@ void Backgroud::refresh()
     }
     
     window.draw(*text);
+    window.draw(*life);
     window.display();
 }
 void Backgroud::check()
@@ -128,7 +133,7 @@ void Backgroud::touchhero()
     for (auto i = enemys->begin(); i<enemys->end(); i++) {
         if ((!(*i)->isdown())&&plane.getGlobalBounds().intersects((*i)->getGlobalBounds())) {
             (*i)->setdownbegin(true);
-            plane.down();
+            plane.setdownbegin(true);
             
         }
 }
@@ -163,7 +168,8 @@ void Backgroud::enemybulletstouch()
             if ((*i)->getGlobalBounds().intersects(plane.getGlobalBounds())) {
                 delete *i;
                 (a->bullets).erase(i);
-                plane.down();
+                plane.ishurt();
+                deblood();
             }
         }
     }
@@ -171,7 +177,7 @@ void Backgroud::enemybulletstouch()
 }
 void Backgroud::isover()
 {
-    if (plane.isdown()) {
+    if (plane.isdownover()) {
         sf::Text over("game over",font,60);
 
         window.clear() ;
@@ -182,4 +188,22 @@ void Backgroud::isover()
             ;
         }
     }
+}
+void Backgroud::deblood()
+{
+    static int lifeint = 3;
+    lifeint--;
+    switch (lifeint) {
+        case 2:
+            lifestr = "OO";
+            break;
+        case 1:
+            lifestr = "O";
+            break;
+        case 0:
+            lifestr = "";
+        default:
+            break;
+    }
+    life->setString(lifestr);
 }

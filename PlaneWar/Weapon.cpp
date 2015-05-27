@@ -28,16 +28,18 @@ void Weapon::fly()
 {
     for(auto &a:bullets)
     {
-        a->move(0, -5);
+        a->move(direction, -5);
     }
 }
 void Weapon::fly2()
 {
     for(auto &a:bullets)
     {
-        a->move(0, 1);
+        a->move(direction, 1);
     }
 }
+
+
 bool Weapon::fire2(sf::Vector2u plane_size, sf::Sprite*plane)
 {
     bullets.push_back(new Bullet());

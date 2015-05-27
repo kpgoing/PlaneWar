@@ -16,7 +16,7 @@ Plane::Plane(std::string name,sf::IntRect intrect)
     this->setTexture(texture);
     this->setTextureRect(intrect);
     plane_size = sf::Vector2u(intrect.width,intrect.height);
-    weapon = new Weapon();
+    weapon = new Weapon(0);
     downbegin = false;
     downover = false;
 }

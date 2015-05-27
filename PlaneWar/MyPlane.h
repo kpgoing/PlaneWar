@@ -16,8 +16,11 @@ class Backgroud;
 class MyPlane :public Plane
 {
 public:
-    MyPlane(std::string name = "shoot.png",sf::IntRect intrect = sf::IntRect(0, 99, 102, 126)):Plane(name,intrect){}
-        
+    MyPlane(std::string name = "shoot.png",sf::IntRect intrect = sf::IntRect(0, 99, 102, 126)):Plane(name,intrect){
+//        weaponleft = new Weapon(-1);
+//        weaponright  = new Weapon(1);
+    }
+    bool fire(sf::Event);
     bool checkleft();
     bool checkright();
     bool checkup();
@@ -29,6 +32,9 @@ public:
     void moving(sf::Event);
     void setowner(Backgroud *);
     virtual bool down();
+    void ishurt();
+    virtual void buttlesmoving();
+
     Backgroud* getowner();
 //    sf::Vector2u getSize();
 private:
@@ -36,7 +42,10 @@ private:
     sf::Texture  texture;
     sf::Vector2u image_size;
     Backgroud *pwindow;
+//    Weapon *weaponleft;
+//    Weapon *weaponright;
     int i = 0;
     int speed =1;
+    int life = 3;
 };
 #endif /* defined(__PlaneWar__MyPlane__) */

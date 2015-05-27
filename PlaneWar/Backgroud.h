@@ -38,6 +38,7 @@ public:
     void setfont();
     void isover();
     void setenemyweapons(std::vector<Weapon*>*);
+    void deblood();
     MyPlane& getmyplane()
     {
         return plane;
@@ -50,6 +51,8 @@ private:
     sf::String str = "SCORE:";
     sf::Text *text;
     sf::Font font;
+    sf::Text *life;
+    sf::String lifestr = "OOO";
     int sumscore = 0;
     std::vector<Bullet*> *bullets;
     std::vector<Enemy*> *enemys;

@@ -18,8 +18,8 @@ class Plane:public sf::Sprite
 {
 public:
     Plane(std::string,sf::IntRect);
-    bool fire(sf::Event);
-    void buttlesmoving();
+    virtual bool fire(sf::Event);
+    virtual void buttlesmoving();
     sf::Vector2u getsize();
     virtual bool down(){
     
@@ -47,5 +47,6 @@ protected:
     Weapon *weapon;
     bool downbegin;
     bool downover;
+    int downstate = 1;
 };
 #endif /* defined(__PlaneWar__Plane__) */

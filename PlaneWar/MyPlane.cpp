@@ -108,7 +108,41 @@ void MyPlane::moving(sf::Event event)
 }
 bool MyPlane::down()
 {
-    this->setTextureRect(sf::IntRect(330, 498,102, 126));
-    downbegin  = true;
+    switch (downstate) {
+        case 1:this->setTextureRect(sf::IntRect(165, 234,102, 126));
+            downstate++;
+            break;
+        case 2:this->setTextureRect(sf::IntRect(330, 624,102, 126));
+            downstate++;
+            break;
+        case 3:this->setTextureRect(sf::IntRect(330, 498,102, 126));
+            downstate++;
+            break;
+        case 4: this->setTextureRect(sf::IntRect(432, 624,102, 126));
+            downstate++;
+            break;
+        case 5:
+            downstate++;
+            downover = true;
+            break;
+        default:
+            break;
+    }
+
     return true;
+}
+bool MyPlane::fire(sf::Event event)
+{
+     weapon->fire(event,plane_size,this);
+}
+void MyPlane::ishurt()
+{
+    life--;
+    if (life==0) {
+        setdownbegin(true);
+    }
+}
+void MyPlane::buttlesmoving()
+{
+    weapon->fly();
 }
