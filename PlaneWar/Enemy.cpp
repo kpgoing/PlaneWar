@@ -37,5 +37,8 @@ bool Enemy::down()
 }
 bool Enemy::fire2()
 {
-   return  weapon->fire2(plane_size,this);
+    for(auto&a:*weapons)
+    {
+        a->fire2(plane_size, this);
+    }
 }

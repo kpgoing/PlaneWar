@@ -98,7 +98,8 @@ void MyPlane::moving(sf::Event event)
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Up) {
         if (!(position.y<= 0)) {
             this->move_up();
-        }
+            this->setTextureRect(sf::IntRect(0, 99,102, 126));
+    }
     }
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Down) {
         if (!(position.y >= 800-plane_size.y)) {
@@ -133,7 +134,17 @@ bool MyPlane::down()
 }
 bool MyPlane::fire(sf::Event event)
 {
-     weapon->fire(event,plane_size,this);
+    bool panduan = false;
+    int i = 1;
+    for(auto &a:(*weapons))
+    {
+        if (i++==1) {
+            panduan = a->fire(event,plane_size,this);
+
+        }else
+            a->fire(event,plane_size,this);
+    }
+    return panduan;
 }
 void MyPlane::ishurt()
 {
@@ -144,5 +155,8 @@ void MyPlane::ishurt()
 }
 void MyPlane::buttlesmoving()
 {
-    weapon->fly();
+    for(auto &a:(*weapons))
+    {
+    a->fly();
+    }
 }

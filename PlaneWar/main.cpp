@@ -5,17 +5,22 @@
 #include "Backgroud.h"
 #include "Weapon.h"
 #include "Army.h"
+#include "Gown.h"
 #include <iostream>
 using  namespace std;
+sf::Image Bullet::image;
 int main(int, char const**)
 {
+    Bullet::image.loadFromFile(resourcePath()+"shoot.png");
+//    Gown::image.loadFromFile(resourcePath()+"shoot.png");
     Backgroud window;
     Army army;
     army.setowner(&window);
 
-    sf::Clock clock1,clock2,clock3,clock4,clock5;
-    sf::Time time1 ,time2,time3,time4,time5;
-
+    sf::Clock clock1,clock2,clock3,clock4,clock5,secondclock;
+    sf::Time time1 ,time2,time3,time4,time5,secondtime;
+    int difference = 1;
+    int enemysfrequency = 3;
     sf::Music music;
     sf::Music music_bullet;
     sf::Music music_down;
@@ -50,7 +55,7 @@ int main(int, char const**)
                 clock1.restart();
         }
         time2 = clock2.getElapsedTime();
-        if ((double)time2.asSeconds()>1) {
+        if ((double)time2.asSeconds()>enemysfrequency) {
             army.add();
             army.fire();
             clock2.restart();
@@ -77,12 +82,28 @@ int main(int, char const**)
             game_over.play();
             music.stop();
         }
+        secondtime = secondclock.getElapsedTime();
+        if (secondtime.asSeconds()>10) {
+//            window.change(difference);
+            if (enemysfrequency==3) {
+                enemysfrequency -=2 ;
+                difference++;
+                window.baomu(difference);
+                difference++;
+//                secondclock.restart();
+            }
+            
+        }
         window.touchenemy();
         window.touch();
         window.touchhero();
         window.refresh();
         window.enemybulletstouch();
-        window.isover();
+        if(window.isover())
+        {
+            enemysfrequency = 3;
+            difference = 1;
+        }
     }
     return EXIT_SUCCESS;
 }

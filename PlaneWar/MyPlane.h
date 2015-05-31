@@ -16,9 +16,13 @@ class Backgroud;
 class MyPlane :public Plane
 {
 public:
-    MyPlane(std::string name = "shoot.png",sf::IntRect intrect = sf::IntRect(0, 99, 102, 126)):Plane(name,intrect){
-//        weaponleft = new Weapon(-1);
-//        weaponright  = new Weapon(1);
+    MyPlane(std::string name = "shoot.png",sf::IntRect intrect = sf::IntRect(165, 360,102, 126)):Plane(name,intrect){
+//        weapons->push_back(new Weapon(-1));
+//        weapons->push_back(new Weapon(1));
+//        weapons->push_back(new Weapon(-2));
+//        weapons->push_back(new Weapon(2));
+        this->setColor(sf::Color::Blue);
+        lifenumber = 3;
     }
     bool fire(sf::Event);
     bool checkleft();
@@ -33,17 +37,36 @@ public:
     void setowner(Backgroud *);
     virtual bool down();
     void ishurt();
-    virtual void buttlesmoving();
-
+    void buttlesmoving();
+    int getlife()
+    {
+        return life;
+    }
+    void gownup()
+    {
+        grade++;
+        switch (grade) {
+            case 2:
+                weapons->push_back(new Weapon(-1));
+                weapons->push_back(new Weapon(1));
+                break;
+            case 3:
+                weapons->push_back(new Weapon(-2));
+                weapons->push_back(new Weapon(2));
+                break;
+            default:
+                break;
+        }
+    }
     Backgroud* getowner();
+//    virtual ~MyPlane();
 //    sf::Vector2u getSize();
 private:
     sf::Image image;
     sf::Texture  texture;
     sf::Vector2u image_size;
     Backgroud *pwindow;
-//    Weapon *weaponleft;
-//    Weapon *weaponright;
+    int grade = 1;
     int i = 0;
     int speed =1;
     int life = 3;

@@ -13,21 +13,26 @@
 #include <SFML/Window.hpp>
 #include "Weapon.h"
 #include <string>
+#include <vector>
 #include <random>
 class Plane:public sf::Sprite
 {
 public:
     Plane(std::string,sf::IntRect);
     virtual bool fire(sf::Event);
-    virtual void buttlesmoving();
+    void buttlesmoving();
     sf::Vector2u getsize();
     virtual bool down(){
-    
-        return true;}
+    return true;
+    }
     bool isdown();
-    Weapon* getweapon()
+    std::vector<Weapon*>* getweapon()
     {
-        return weapon;
+        return weapons;
+    }
+    void setdownover(bool b)
+    {
+        downover = b;
     }
      void setdownbegin(bool b)
     {
@@ -37,6 +42,19 @@ public:
     {
         return downover;
     }
+    void delife()
+    {
+        lifenumber--;
+    }
+    int getlife()
+    {
+        return lifenumber;
+    }
+    void setlife(int n)
+    {
+        lifenumber = n;
+    }
+
 private:
     
     sf::Vector2f plane_position;
@@ -44,9 +62,10 @@ private:
     sf::Texture  texture;
 protected:
     sf::Vector2u plane_size;
-    Weapon *weapon;
+    std::vector<Weapon*> *weapons;
     bool downbegin;
     bool downover;
     int downstate = 1;
+    int lifenumber = 1;
 };
 #endif /* defined(__PlaneWar__Plane__) */

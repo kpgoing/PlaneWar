@@ -13,6 +13,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Audio.hpp>
 #include "Plane.h"
+#include "Gown.h"
 class Enemy:public Plane
 {
 public:
@@ -22,6 +23,19 @@ public:
         this->setPosition(u(e), -200);}
     virtual bool down();
     virtual bool fire2();
+    void changetobomb()
+    {
+        bomb = new Gown();
+        this->setTextureRect(sf::IntRect(102, 118, 60, 107));
+    }
+    bool ischangetobmob()
+    {
+        return isbomb;
+    }
+    void setbomb()
+    {
+        isbomb = true;
+    }
 //    virtual void setimage();
     
 private:
@@ -29,6 +43,8 @@ private:
     sf::Image image;
     sf::Clock clock;
     sf::Time sftime;
+    bool isbomb = false;
+    Gown *bomb = nullptr;
 //protected:
 //    int downstate = 1;
 //    bool downbool = false;

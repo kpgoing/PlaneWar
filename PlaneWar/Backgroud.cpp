@@ -22,10 +22,11 @@ Backgroud::Backgroud()
     }
     text = new sf::Text(str, font, 30);
     text->setPosition(0,10);
-    plane.setowner(this);
-    sf::Vector2u myplane_size = plane.getsize();
-    plane.setPosition((screen_size.x-myplane_size.x)/2,screen_size.y-myplane_size.y);
-    setbullets(&(plane.getweapon()->bullets));
+    plane = new MyPlane();
+    plane->setowner(this);
+    myplane_size = plane->getsize();
+    plane->setPosition((screen_size.x-myplane_size.x)/2,screen_size.y-myplane_size.y);
+    setmyplaneweapons(plane->getweapon());
     life = new sf::Text(lifestr,font,30);
     life->setPosition(400, 10);
     life->setColor(sf::Color::Red);
@@ -34,9 +35,9 @@ sf::RenderWindow& Backgroud::getwindow()
 {
     return window;
 }
-void Backgroud::setbullets(std::vector<Bullet*> *p)
+void Backgroud::setmyplaneweapons(std::vector<Weapon *> *p)
 {
-    bullets = p;
+    myplaneweapons= p;
 }
 void Backgroud::setenemys(std::vector<Enemy*> *p)
 {
@@ -49,7 +50,7 @@ void Backgroud::setenemyweapons(std::vector<Weapon*> *p)
 void Backgroud::addscore(int score)
 {
     sumscore +=score;
-    str ="SCORE:"+ std::to_string(sumscore);
+    str ="SCORE  "+ std::to_string(sumscore);
     text->setString(str);
     
 }
@@ -59,24 +60,24 @@ void Backgroud::refresh()
     window.clear();
    
     window.draw(sprite);
-    window.draw(plane);
-    for(auto &a:(*bullets))
+    window.draw(*plane);
+    for(auto &a:(*myplaneweapons))
     {
-        window.draw(*a);
+        for(auto&b:a->bullets)
+        {
+            window.draw(*b);
+        }
     }
     for(auto &a:(*enemys))
     {
         window.draw(*a);
-//        for(auto &b:(((a)->getweapon())->bullets))
-//        {
-//            window.draw(*b);
-//        }
     }
     for(auto &a:*enemyweapons)
     {
         for(auto&b:a->bullets)
         {
             window.draw(*b);
+         
         }
     }
     
@@ -86,12 +87,15 @@ void Backgroud::refresh()
 }
 void Backgroud::check()
 {
-    for (auto i =( bullets->begin()); i<(bullets->end()); i++) {
+    for(auto &a:(*myplaneweapons))
+    {
+    for (auto i =( a->bullets.begin()); i<(a->bullets.end()); i++) {
         if ((*i)->getPosition().y<-5) {
             delete *i;
-            bullets->erase(i);
+            a->bullets.erase(i);
             
         }
+    }
     }
     
     for (auto i = (enemys->begin()); i<(enemys->end()); i++) {
@@ -116,25 +120,37 @@ void Backgroud::check()
 }
 void Backgroud::touch()
 {
-    
-    for(auto &a:(*bullets))
+    for(auto &a:(*myplaneweapons))
+    {
+    for(auto &b:a->bullets)
     {
         for (auto i = enemys->begin(); i<enemys->end(); i++) {
-            if ((!(*i)->isdown())&&a->getGlobalBounds().intersects((*i)->getGlobalBounds())) {
+            if ((!(*i)->isdown())&&b->getGlobalBounds().intersects((*i)->getGlobalBounds())) {
+                std::uniform_int_distribution<unsigned> u(0,20);
+                std::default_random_engine e(time(0));
+                if (u(e)>15) {
+                    (*i)->changetobomb();
+                }else
                 (*i)->setdownbegin(true);
                 addscore(10);
-               a->setuse(true);
+               b->setuse(true);
             }
         }
+    }
     }
 }
 void Backgroud::touchhero()
 {
     for (auto i = enemys->begin(); i<enemys->end(); i++) {
-        if ((!(*i)->isdown())&&plane.getGlobalBounds().intersects((*i)->getGlobalBounds())) {
+        if ((!(*i)->isdown())&&plane->getGlobalBounds().intersects((*i)->getGlobalBounds())) {
+            if ((*i)->ischangetobmob()) {
+                plane->gownup();
+                (*i)->setdownover(true);
+            }else
+            {
             (*i)->setdownbegin(true);
-            plane.setdownbegin(true);
-            
+            plane->setdownbegin(true);
+            }
         }
 }
 }
@@ -150,12 +166,15 @@ void Backgroud::touchenemy(){
 bool Backgroud::touchbullet()
 {
     bool panduan = false;
-    for (auto i = bullets->begin(); i<bullets->end(); i++) {
+    for(auto &a:(*myplaneweapons))
+    {
+    for (auto i = a->bullets.begin(); i<a->bullets.end(); i++) {
         if ((*i)->getuse()) {
             delete *i;
-            bullets->erase(i);
+            a->bullets.erase(i);
             panduan = true;
         }
+    }
     }
     return panduan;
 }
@@ -165,45 +184,92 @@ void Backgroud::enemybulletstouch()
     {
         for(auto i =((a->bullets).begin());i<((a->bullets).end());i++)
         {
-            if ((*i)->getGlobalBounds().intersects(plane.getGlobalBounds())) {
+            if ((*i)->getGlobalBounds().intersects(plane->getGlobalBounds())) {
                 delete *i;
                 (a->bullets).erase(i);
-                plane.ishurt();
+                plane->ishurt();
+                if(plane->getlife()>=0)
                 deblood();
             }
         }
     }
 
 }
-void Backgroud::isover()
+bool Backgroud::isover()
 {
-    if (plane.isdownover()) {
+    if (plane->isdownover()) {
+        int i = 0;
+        bool panduan = true;
         sf::Text over("game over",font,60);
-
-        window.clear() ;
+        over.setColor(sf::Color::Red);
+        over.setPosition(50,200);
+        window.clear();
+        score = new sf::Text(str,font, 40);
+        score->setPosition(110, 300);
+        sf::Text tryagain("try again",font,20);
+        sf::Text exitbutton("close",font,20);
+        tryagain.setPosition(50, 500);
+        exitbutton.setPosition(300, 500);
+        window.draw(tryagain);
+        window.draw(exitbutton);
+        window.draw(*score);
         window.draw(over);
         window.display();
+        sf::Event event;
+        while (panduan) {
+        
+        while (window.pollEvent(event)) {
+        
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Left)
+             {
+                 tryagain.setCharacterSize(40);
+                 exitbutton.setCharacterSize(20);
+                 i = 1;
+             }
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right)
+            {
+                tryagain.setCharacterSize(20);
+                exitbutton.setCharacterSize(40);
+                i = 0;
+            }
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Return)
+            {
+                if (i==1) {
+                    again();
+                    return true;
+                }else
+                {
+                    exit(0);
+                }
+                }
+            window.clear();
+            window.draw(tryagain);
+            window.draw(exitbutton);
+            window.draw(*score);
+            window.draw(over);
+            window.display();
 
-        while (true) {
-            ;
         }
+        
+
+    
+        }
+    
     }
+    return false;
 }
 void Backgroud::deblood()
 {
-    static int lifeint = 3;
-    lifeint--;
-    switch (lifeint) {
-        case 2:
-            lifestr = "OO";
-            break;
-        case 1:
-            lifestr = "O";
-            break;
-        case 0:
-            lifestr = "";
-        default:
-            break;
-    }
+//    plane->delife();
+    lifestr = "";
+    lifestr.append("OOO",plane->getlife());
+
     life->setString(lifestr);
+}
+void Backgroud::change(int i)
+{
+    for(auto &a:*enemyweapons)
+        {
+            a->setspeed(i);
+        }
 }

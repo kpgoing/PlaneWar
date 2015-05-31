@@ -28,14 +28,14 @@ void Weapon::fly()
 {
     for(auto &a:bullets)
     {
-        a->move(direction, -5);
+        a->move(direction, -3);
     }
 }
 void Weapon::fly2()
 {
     for(auto &a:bullets)
     {
-        a->move(direction, 1);
+        a->move(direction, speed);
     }
 }
 
@@ -43,6 +43,7 @@ void Weapon::fly2()
 bool Weapon::fire2(sf::Vector2u plane_size, sf::Sprite*plane)
 {
     bullets.push_back(new Bullet());
+    (*(bullets.end()-1))->setColor(sf::Color::Black);
     sf::Vector2f plane_position = plane->getPosition();
     (*(bullets.end()-1))->setPosition(plane_size.x/2+plane_position.x,plane_position.y+50);
     return true;
