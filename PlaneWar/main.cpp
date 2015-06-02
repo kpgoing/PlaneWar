@@ -5,7 +5,6 @@
 #include "Backgroud.h"
 #include "Weapon.h"
 #include "Army.h"
-#include "Gown.h"
 #include <iostream>
 using  namespace std;
 sf::Image Bullet::image;
@@ -103,6 +102,11 @@ int main(int, char const**)
         {
             enemysfrequency = 3;
             difference = 1;
+        }
+        time4 = clock4.getElapsedTime();
+        if (time4.asSeconds()>0.5) {
+            window.usebomb(event);
+            clock4.restart();
         }
     }
     return EXIT_SUCCESS;

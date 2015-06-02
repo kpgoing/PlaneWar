@@ -34,6 +34,7 @@ public:
     void touchenemy();
     bool touchbullet();
     void touchhero();
+    void usebomb(sf::Event);
     void enemybulletstouch();
     void addscore(int);
     void setfont();
@@ -77,6 +78,7 @@ public:
     {
         return *plane;
     }
+    void changebombnum(int);
     void again()
     {
 //        delete  plane;
@@ -109,10 +111,13 @@ private:
     sf::Text *life;
     sf::Text *score;
     sf::Text *zimu;
+    sf::Text *bomb;
+    std::string bombstr = "BBB";
     std::string zm = "sceond guan";
     std::string lifestr = "OOO";
     sf::Vector2u myplane_size;
     int sumscore = 0;
+    int bombnum = 3;
     std::vector<Weapon*> *myplaneweapons;
     std::vector<Enemy*> *enemys;
     std::vector<Weapon*> *enemyweapons;

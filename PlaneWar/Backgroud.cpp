@@ -20,6 +20,9 @@ Backgroud::Backgroud()
     if (!font.loadFromFile(resourcePath() + "Promses Broken Dream1.ttf")) {
         return EXIT_FAILURE;
     }
+    bomb = new sf::Text(bombstr,font,30);
+    bomb->setColor(sf::Color::Red);
+    bomb->setPosition(0, 760);
     text = new sf::Text(str, font, 30);
     text->setPosition(0,10);
     plane = new MyPlane();
@@ -83,6 +86,7 @@ void Backgroud::refresh()
     
     window.draw(*text);
     window.draw(*life);
+    window.draw(*bomb);
     window.display();
 }
 void Backgroud::check()
@@ -125,11 +129,14 @@ void Backgroud::touch()
     for(auto &b:a->bullets)
     {
         for (auto i = enemys->begin(); i<enemys->end(); i++) {
-            if ((!(*i)->isdown())&&b->getGlobalBounds().intersects((*i)->getGlobalBounds())) {
+            if ((!(*i)->isdown())&&(!(*i)->ischangetobmob())&&(!(*i)->ischangetobmob2())&&b->getGlobalBounds().intersects((*i)->getGlobalBounds())) {
                 std::uniform_int_distribution<unsigned> u(0,20);
                 std::default_random_engine e(time(0));
-                if (u(e)>15) {
+                if (u(e)>17) {
                     (*i)->changetobomb();
+                }else if(u(e)>15)
+                {
+                    (*i)->changetobomb2();
                 }else
                 (*i)->setdownbegin(true);
                 addscore(10);
@@ -146,14 +153,18 @@ void Backgroud::touchhero()
             if ((*i)->ischangetobmob()) {
                 plane->gownup();
                 (*i)->setdownover(true);
-            }else
+            }else if((*i)->ischangetobmob2())
             {
+                changebombnum(1);
+                (*i)->setdownover(true);
+            }else{
             (*i)->setdownbegin(true);
             plane->setdownbegin(true);
             }
+            }
         }
 }
-}
+
 void Backgroud::touchenemy(){
     for (auto i = enemys->begin(); i<enemys->end(); i++) {
         if ((*i)->isdownover()) {
@@ -210,6 +221,8 @@ bool Backgroud::isover()
         sf::Text exitbutton("close",font,20);
         tryagain.setPosition(50, 500);
         exitbutton.setPosition(300, 500);
+        bombnum = 3;
+        bomb->setString("BBB");
         window.draw(tryagain);
         window.draw(exitbutton);
         window.draw(*score);
@@ -266,10 +279,44 @@ void Backgroud::deblood()
 
     life->setString(lifestr);
 }
+void Backgroud::changebombnum(int i)
+{
+    bombstr ="";
+    bombnum +=i;
+    bombstr.append("BBBBB",bombnum);
+    bomb->setString(bombstr);
+}
 void Backgroud::change(int i)
 {
     for(auto &a:*enemyweapons)
         {
             a->setspeed(i);
         }
+}
+void Backgroud::usebomb(sf::Event event)
+{
+    if(bombnum>0)
+    {
+    if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::LControl)
+    {
+        changebombnum(-1);
+    for (auto i = enemys->begin(); i<enemys->end(); i++) {
+        if(!(*i)->ischangetobmob2()&&!(*i)->ischangetobmob())
+        {(*i)->setdownbegin(true);
+            addscore(10);
+        }
+    }
+        for(auto &a:(*enemyweapons))
+        {
+            for(auto i =((a->bullets).begin());i<((a->bullets).end());i++)
+            {
+                    delete *i;
+                    (a->bullets).erase(i);
+                
+            }
+        }
+
+    }
+    }
+
 }

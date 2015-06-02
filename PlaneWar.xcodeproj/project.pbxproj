@@ -15,7 +15,6 @@
 		2C00F08E1B0B361600AD7B19 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C00F08D1B0B361600AD7B19 /* icon.png */; };
 		2C0963A21B11BF2600794DD7 /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C0963A01B11BF2600794DD7 /* Enemy.cpp */; };
 		2C37A5AC1B0B66AB000D19C5 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C37A5AA1B0B66AB000D19C5 /* Bullet.cpp */; };
-		2C63CF101B1A8F4100AA1BC1 /* Gown.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2C63CF0E1B1A8F4100AA1BC1 /* Gown.cpp */; };
 		2C830D321B15671800E4CC75 /* game_over.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 2C830D311B15671800E4CC75 /* game_over.ogg */; };
 		2C830D341B156CCF00E4CC75 /* Promses Broken Dream1.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2C830D331B156CCF00E4CC75 /* Promses Broken Dream1.ttf */; };
 		2C91FC381B0B5C9300EEDA44 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C91FC371B0B5C9300EEDA44 /* background.png */; };
@@ -50,8 +49,6 @@
 		2C0963A11B11BF2600794DD7 /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		2C37A5AA1B0B66AB000D19C5 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bullet.cpp; sourceTree = "<group>"; };
 		2C37A5AB1B0B66AB000D19C5 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bullet.h; sourceTree = "<group>"; };
-		2C63CF0E1B1A8F4100AA1BC1 /* Gown.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gown.cpp; sourceTree = "<group>"; };
-		2C63CF0F1B1A8F4100AA1BC1 /* Gown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gown.h; sourceTree = "<group>"; };
 		2C73CA5B1B183FED006C6141 /* Resources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Resources.h; sourceTree = "<group>"; };
 		2C830D311B15671800E4CC75 /* game_over.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = game_over.ogg; sourceTree = "<group>"; };
 		2C830D331B156CCF00E4CC75 /* Promses Broken Dream1.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Promses Broken Dream1.ttf"; sourceTree = "<group>"; };
@@ -126,8 +123,6 @@
 				2C00F0811B0B361600AD7B19 /* ResourcePath.mm */,
 				2C00F0831B0B361600AD7B19 /* ResourcePath.hpp */,
 				2C00F0841B0B361600AD7B19 /* main.cpp */,
-				2C63CF0E1B1A8F4100AA1BC1 /* Gown.cpp */,
-				2C63CF0F1B1A8F4100AA1BC1 /* Gown.h */,
 				2CDF43431B0C7CB300279FFA /* Weapon.cpp */,
 				2CDF43441B0C7CB300279FFA /* Weapon.h */,
 				2C37A5AA1B0B66AB000D19C5 /* Bullet.cpp */,
@@ -281,7 +276,6 @@
 				2C9AA7D91B11D1390038C21C /* Army1.cpp in Sources */,
 				2CAD066B1B142E4600B1BC55 /* Enemy2.cpp in Sources */,
 				2C37A5AC1B0B66AB000D19C5 /* Bullet.cpp in Sources */,
-				2C63CF101B1A8F4100AA1BC1 /* Gown.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

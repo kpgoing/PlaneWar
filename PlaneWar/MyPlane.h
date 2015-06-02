@@ -54,6 +54,9 @@ public:
                 weapons->push_back(new Weapon(-2));
                 weapons->push_back(new Weapon(2));
                 break;
+            case 4:
+                weapons->push_back(new Weapon(-3));
+                weapons->push_back(new Weapon(3));
             default:
                 break;
         }

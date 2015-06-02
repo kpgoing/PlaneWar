@@ -13,7 +13,6 @@ void Army::add()
     while (i%4==0) {
         enemys.push_back(new Enemy1());
         (*(enemys.end()-1))->setColor(sf::Color::Magenta);
-//        (*(enemys.end()-1))->setbomb();
         for(auto&a:*((*(enemys.end()-1))->getweapon()))
         {
             enemyweapons.push_back(a);
@@ -25,7 +24,6 @@ void Army::add()
     while (i%5==0) {
         enemys.push_back(new Enemy2());
         (*(enemys.end()-1))->setColor(sf::Color::Green);
-//        (*(enemys.end()-1))->setbomb();
         for(auto&a:*((*(enemys.end()-1))->getweapon()))
         {
             enemyweapons.push_back(a);
@@ -35,7 +33,6 @@ void Army::add()
     }
     enemys.push_back(new Enemy());
     (*(enemys.end()-1))->setColor(sf::Color::Yellow);
-//    (*(enemys.end()-1))->setbomb();
     for(auto&a:*((*(enemys.end()-1))->getweapon())){
         enemyweapons.push_back(a);
     }
@@ -59,8 +56,10 @@ bool Army::fire()
 {
     for(auto&a:enemys)
     {
-        if(!(a->ischangetobmob()))
+        if(!(a->ischangetobmob())&&!(a->ischangetobmob2()))
+        {
         a->fire2();
+        }
     }
     return true;
 }
