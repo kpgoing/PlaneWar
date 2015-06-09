@@ -102,6 +102,7 @@ int main(int, char const**)
         {
             enemysfrequency = 3;
             difference = 1;
+            secondclock.restart();
         }
         time4 = clock4.getElapsedTime();
         if (time4.asSeconds()>0.5) {

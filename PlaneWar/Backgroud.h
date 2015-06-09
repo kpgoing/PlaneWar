@@ -87,7 +87,8 @@ public:
         sumscore = 0;
         plane->setowner(this);
         lifestr = "OOO";
-        score->setString(str);
+//        score->setString(str);
+        text->setString(str);
         change(1);
         life->setString(lifestr);
         setmyplaneweapons(plane->getweapon());
@@ -98,6 +99,7 @@ public:
 //        deblood();
 //        plane.setTextureRect(sf::IntRect(165, 360,102, 126));
         plane->setPosition((screen_size.x-myplane_size.x)/2,screen_size.y-myplane_size.y);
+//        refresh();
     }
     static sf::RenderWindow window;
 private:

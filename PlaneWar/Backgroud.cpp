@@ -155,7 +155,9 @@ void Backgroud::touchhero()
                 (*i)->setdownover(true);
             }else if((*i)->ischangetobmob2())
             {
-                changebombnum(1);
+                if (bombnum<6) {
+                    changebombnum(1);
+                }
                 (*i)->setdownover(true);
             }else{
             (*i)->setdownbegin(true);

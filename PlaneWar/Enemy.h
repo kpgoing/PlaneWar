@@ -38,7 +38,7 @@ public:
     void changetobomb2()
     {
         isbomb2 = true;
-        this->setTextureRect(sf::IntRect(810, 691,63, 57));
+        this->setTextureRect(sf::IntRect(102, 118, 60, 107));
     }
     bool ischangetobmob2()
     {
