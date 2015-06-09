@@ -91,25 +91,72 @@ void MyPlane::moving(sf::Event event)
          }
     }
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Right) {
-        if (!(position.x >=480-image_size.x)) {
+        if (!(position.x>=480-plane_size.x)) {
             this->move_right();
         }
-        this->move_right();
     }
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Up) {
         if (!(position.y<= 0)) {
             this->move_up();
-        }
+            this->setTextureRect(sf::IntRect(0, 99,102, 126));
+    }
     }
     if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Down) {
-        if (!(position.y >= 800-image_size.y)) {
+        if (!(position.y >= 800-plane_size.y)) {
        this->move_down();
             }
     }
 }
 bool MyPlane::down()
 {
-    this->setTextureRect(sf::IntRect(330, 498,102, 126));
-    downbool  = true;
+    switch (downstate) {
+        case 1:this->setTextureRect(sf::IntRect(165, 234,102, 126));
+            downstate++;
+            break;
+        case 2:this->setTextureRect(sf::IntRect(330, 624,102, 126));
+            downstate++;
+            break;
+        case 3:this->setTextureRect(sf::IntRect(330, 498,102, 126));
+            downstate++;
+            break;
+        case 4: this->setTextureRect(sf::IntRect(432, 624,102, 126));
+            downstate++;
+            break;
+        case 5:
+            downstate++;
+            downover = true;
+            break;
+        default:
+            break;
+    }
+
     return true;
+}
+bool MyPlane::fire(sf::Event event)
+{
+    bool panduan = false;
+    int i = 1;
+    for(auto &a:(*weapons))
+    {
+        if (i++==1) {
+            panduan = a->fire(event,plane_size,this);
+
+        }else
+            a->fire(event,plane_size,this);
+    }
+    return panduan;
+}
+void MyPlane::ishurt()
+{
+    life--;
+    if (life==0) {
+        setdownbegin(true);
+    }
+}
+void MyPlane::buttlesmoving()
+{
+    for(auto &a:(*weapons))
+    {
+    a->fly();
+    }
 }

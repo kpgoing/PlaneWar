@@ -22,12 +22,44 @@ public:
         this->setPosition(u(e), -200);}
     virtual bool down();
     virtual bool fire2();
+    void changetobomb()
+    {
+        isbomb = true;
+        this->setTextureRect(sf::IntRect(267, 398, 58, 88));
+    }
+    bool ischangetobmob()
+    {
+        return isbomb;
+    }
+    void setbomb()
+    {
+        isbomb = true;
+    }
+    void changetobomb2()
+    {
+        isbomb2 = true;
+        this->setTextureRect(sf::IntRect(102, 118, 60, 107));
+    }
+    bool ischangetobmob2()
+    {
+        return isbomb2;
+    }
+    void setbomb2()
+    {
+        isbomb2 = true;
+    }
+
 //    virtual void setimage();
     
 private:
     sf::Texture texture;
     sf::Image image;
-    
+    sf::Clock clock;
+    sf::Time sftime;
+    bool isbomb = false;
+    bool isbomb2 = false;
+//protected:
+//    int downstate = 1;
 //    bool downbool = false;
 };
 #endif /* defined(__PlaneWar__Enemy__) */

@@ -12,14 +12,33 @@
 #include <iostream>
 bool Enemy::down()
 {
-    this->setTextureRect(sf::IntRect(267, 347,57, 51));
-    this->setTextureRect(sf::IntRect(873, 697,57, 51));
-    this->setTextureRect(sf::IntRect(267, 296,57, 51));
-    this->setTextureRect(sf::IntRect(930, 697,57, 51));
-    downbool = true;
+    switch (downstate) {
+        case 1:this->setTextureRect(sf::IntRect(267, 347,57, 51));
+            downstate++;
+        break;
+        case 2:this->setTextureRect(sf::IntRect(873, 697,57, 51));
+         downstate++;
+            break;
+        case 3:this->setTextureRect(sf::IntRect(267, 296,57, 51));
+         downstate++;
+            break;
+        case 4: this->setTextureRect(sf::IntRect(930, 697,57, 51));
+         downstate++;
+            downover = true;
+            break;
+        default:
+            break;
+    }
+//    this->setTextureRect(sf::IntRect(267, 347,57, 51));
+//    this->setTextureRect(sf::IntRect(873, 697,57, 51));
+//    this->setTextureRect(sf::IntRect(267, 296,57, 51));
+//    this->setTextureRect(sf::IntRect(930, 697,57, 51));
     return true;
 }
 bool Enemy::fire2()
 {
-   return  weapon->fire2(plane_size,this);
+    for(auto&a:*weapons)
+    {
+        a->fire2(plane_size, this);
+    }
 }
